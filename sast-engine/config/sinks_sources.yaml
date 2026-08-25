@@ -1,0 +1,424 @@
+injection:
+  sources:
+    # Python (Flask/Django)
+    - ".*\\brequest\\.args\\b.*"
+    - ".*\\brequest\\.form\\b.*"
+    - ".*\\brequest\\.GET\\b.*"
+    - ".*\\brequest\\.POST\\b.*"
+    # Java (Spring/Servlets)
+    - ".*\\bgetParameter\\(.*"
+    - ".*\\bgetQueryString\\(.*"
+    - ".*\\bgetHeader\\(.*"
+    - ".*\\bgetCookies\\(.*"
+    - ".*\\bgetValue\\(.*"
+    - ".*\\bRequestParam\\b.*"
+    - ".*\\bPathVariable\\b.*"
+    - ".*\\bRequestBody\\b.*"
+    # Node.js
+    - ".*\\breq\\.query\\b.*"
+    - ".*\\breq\\.body\\b.*"
+    - ".*\\breq\\.params\\b.*"
+    # PHP
+    - ".*\\$_GET\\b.*"
+    - ".*\\$_POST\\b.*"
+    - ".*\\$_REQUEST\\b.*"
+    - ".*\\$_COOKIE\\b.*"
+  sinks:
+    # SQLi Python
+    - pattern: ".*\\bcursor\\.execute\\(.*"
+      subtype: "CWE-89-SQLI"
+    - pattern: ".*\\bdb\\.execute\\(.*"
+      subtype: "CWE-89-SQLI"
+    # SQLi Java
+    - pattern: ".*\\bexecuteQuery\\b.*"
+      subtype: "CWE-89-SQLI"
+    - pattern: ".*\\bexecuteUpdate\\b.*"
+      subtype: "CWE-89-SQLI"
+    - pattern: ".*\\bexecute\\(.*"
+      subtype: "CWE-89-SQLI"
+    - pattern: ".*\\bJdbcTemplate\\.(query|queryForObject|update|execute)\\(.*"
+      subtype: "CWE-89-SQLI"
+    - pattern: ".*\\bEntityManager\\.(createQuery|createNativeQuery)\\(.*"
+      subtype: "CWE-89-SQLI"
+    # Command Injection Java
+    - pattern: ".*\\bRuntime\\.getRuntime\\(\\)\\.exec\\(.*"
+      subtype: "CWE-78-COMMAND-INJECTION"
+    - pattern: ".*\\bProcessBuilder\\b.*"
+      subtype: "CWE-78-COMMAND-INJECTION"
+    # Command Injection Python
+    - pattern: ".*\\bsubprocess\\.run\\(.*"
+      subtype: "CWE-78-COMMAND-INJECTION"
+    - pattern: ".*\\bsubprocess\\.Popen\\(.*"
+      subtype: "CWE-78-COMMAND-INJECTION"
+    - pattern: ".*\\bos\\.system\\(.*"
+      subtype: "CWE-78-COMMAND-INJECTION"
+    - pattern: ".*\\bos\\.popen\\(.*"
+      subtype: "CWE-78-COMMAND-INJECTION"
+    # Node.js
+    - pattern: ".*\\bconnection\\.query\\(.*"
+      subtype: "CWE-89-SQLI"
+    - pattern: ".*\\bdb\\.query\\(.*"
+      subtype: "CWE-89-SQLI"
+    - pattern: ".*\\bpool\\.query\\(.*"
+      subtype: "CWE-89-SQLI"
+    # SQLi PHP
+    - pattern: ".*\\bmysqli_query\\(.*"
+      subtype: "CWE-89-SQLI"
+    - pattern: ".*->query\\(.*"
+      subtype: "CWE-89-SQLI"
+    # SQLi ORMs / Query Builders
+    - pattern: ".*\\bwhereRaw\\(.*"
+      subtype: "CWE-89-SQLI"
+    - pattern: ".*\\borderByRaw\\(.*"
+      subtype: "CWE-89-SQLI"
+    - pattern: ".*\\bchild_process\\.(exec|execSync|spawn)\\(.*"
+      subtype: "CWE-78-COMMAND-INJECTION"
+  sanitizers:
+    - ".*\\bescape\\b.*"
+    - ".*\\bquote\\b.*"
+    # Node.js
+    - ".*\\bmysql\\.escape\\(.*"
+    - ".*\\.escape\\(.*"
+    - ".*\\bparameterized\\b.*"
+
+# KNOWN LIMITATION: arg_index scoping not yet supported by runner.sc
+# Taint reaching ANY argument of these calls will currently be reported, not just the URL argument.
+# See Fix 5 in remediation notes.
+ssrf:
+  sources:
+    # Python
+    - ".*\\brequest\\.args\\b.*"
+    - ".*\\brequest\\.form\\b.*"
+    # Java
+    - ".*\\bgetParameter\\(.*"
+    - ".*\\bRequestParam\\b.*"
+    - ".*\\bPathVariable\\b.*"
+    - ".*\\bRequestBody\\b.*"
+    # Node.js
+    - ".*\\breq\\.query\\b.*"
+    - ".*\\breq\\.body\\b.*"
+  sinks:
+    # Python HTTP Clients
+    - pattern: ".*\\brequests\\.get\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\brequests\\.post\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\burllib\\.request\\.urlopen\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bhttpx\\..*get\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\baiohttp\\..*get\\(.*"
+      subtype: "CWE-918-SSRF"
+    # Java HTTP Clients
+    # KNOWN LIMITATION: these method names are not SSRF-specific in isolation 
+    # (openConnection/executeMethod exist in unrelated libraries too). 
+    # Residual false positives here are expected to be caught by the LLM 
+    # cascade's contextual reasoning stage, not this static layer.
+    - pattern: ".*\\bopenConnection\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bexecuteMethod\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bHttpClient\\.execute\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bRestTemplate\\.(getForEntity|postForEntity|exchange|getForObject|postForObject)\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bWebClient\\.create\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bOkHttpClient\\b.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bHttpClient\\..*send\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bImageIO\\.read\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bDocumentBuilder\\..*parse\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bURLClassLoader\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bJsoup\\.connect\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bopenStream\\(.*"
+      subtype: "CWE-918-SSRF"
+    # Node.js
+    - pattern: ".*\\baxios\\.(get|post)\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bfetch\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bhttp\\.get\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bhttps\\.get\\(.*"
+      subtype: "CWE-918-SSRF"
+    # PHP
+    - pattern: ".*\\bfile_get_contents\\(.*"
+      subtype: "CWE-918-SSRF"
+    - pattern: ".*\\bcurl_setopt\\(.*"
+      subtype: "CWE-918-SSRF"
+  sanitizers:
+    - ".*\\bvalidate_url\\b.*"
+    - ".*\\bisAllowedHost\\b.*"
+    - ".*\\burlWhitelist\\b.*"
+    - ".*\\bisPrivateIP\\b.*"
+    - ".*\\bSSRFProtection\\b.*"
+    - ".*\\bisBlockedHost\\b.*"
+
+deserialization:
+  sources:
+    # Python
+    - ".*\\brequests\\.get\\(.*"
+    - ".*\\brequests\\.post\\(.*"
+    - ".*\\burllib\\.request\\.urlopen\\(.*"
+    # Java
+    - ".*\\bgetParameter\\(.*"
+    - ".*\\bgetInputStream\\(.*"
+    - ".*\\bRequestParam\\b.*"
+    - ".*\\bPathVariable\\b.*"
+    - ".*\\bRequestBody\\b.*"
+    # Node.js
+    - ".*\\breq\\.body\\b.*"
+    - ".*\\breq\\.query\\b.*"
+  sinks:
+    # Python
+    - pattern: ".*\\bpickle\\.loads\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\byaml\\.load\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    # Java
+    - pattern: ".*\\breadObject\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\breadUnshared\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bXMLDecoder\\.readObject\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bfromXML\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bparseObject\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bJSON\\.parse\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\benableDefaultTyping\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\.load\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    # Node.js
+    - pattern: ".*\\bJSON\\.parse\\(.*eval.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bnode-serialize\\b.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bunserialize\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    # .NET
+    - pattern: ".*\\bBinaryFormatter\\.Deserialize\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bLosFormatter\\.Deserialize\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bNetDataContractSerializer\\.Deserialize\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bSoapFormatter\\.Deserialize\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bObjectStateFormatter\\.Deserialize\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+    - pattern: ".*\\bJsonConvert\\.DeserializeObject\\(.*"
+      subtype: "CWE-502-DESERIALIZATION"
+  sanitizers:
+    - ".*\\bsafe_load\\(.*"
+
+path_traversal:
+  sources:
+    # Python
+    - ".*\\brequest\\.args\\b.*"
+    - ".*\\brequest\\.form\\b.*"
+    # Java
+    - ".*\\bgetParameter\\(.*"
+    - ".*\\bRequestParam\\b.*"
+    - ".*\\bPathVariable\\b.*"
+    - ".*\\bRequestBody\\b.*"
+    # Node.js
+    - ".*\\breq\\.query\\b.*"
+    - ".*\\breq\\.body\\b.*"
+  sinks:
+    # Java File Access
+    - pattern: ".*\\bgetResourceAsStream\\(.*"
+      subtype: "CWE-22-PATH-TRAVERSAL"
+    - pattern: ".*\\bFileInputStream\\b.*"
+      subtype: "CWE-22-PATH-TRAVERSAL"
+    - pattern: ".*\\bnew\\s+File\\(.*"
+      subtype: "CWE-22-PATH-TRAVERSAL"
+    - pattern: ".*\\bPaths\\.get\\(.*"
+      subtype: "CWE-22-PATH-TRAVERSAL"
+    - pattern: ".*\\bFileReader\\b.*"
+      subtype: "CWE-22-PATH-TRAVERSAL"
+    # Python File Access
+    - pattern: ".*\\bopen\\(.*"
+      subtype: "CWE-22-PATH-TRAVERSAL"
+    # Node.js File Access
+    - pattern: ".*\\bfs\\.(readFile|readFileSync|createReadStream)\\(.*"
+      subtype: "CWE-22-PATH-TRAVERSAL"
+  sanitizers:
+    # Basic check for path traversal sequences
+    - ".*\\bcontains\\(\".*\\.\\./.*\"\\).*"
+
+xxe:
+  sources:
+    # Java HttpServletRequest InputStreams
+    - ".*\\bgetInputStream\\(.*"
+    - ".*\\bgetReader\\(.*"
+    # Python/Node.js XML parser inputs
+    - ".*\\brequest\\.body\\b.*"
+    - ".*\\breq\\.body\\b.*"
+  sinks:
+    # Java XML Parsers
+    - pattern: ".*\\bunmarshal\\(.*"
+      subtype: "CWE-611-XXE"
+    - pattern: ".*\\bSAXParser\\.parse\\(.*"
+      subtype: "CWE-611-XXE"
+    - pattern: ".*\\bDocumentBuilder\\.parse\\(.*"
+      subtype: "CWE-611-XXE"
+    - pattern: ".*\\bXMLReader\\.parse\\(.*"
+      subtype: "CWE-611-XXE"
+    # Python
+    - pattern: ".*\\blxml\\.etree\\.parse\\(.*"
+      subtype: "CWE-611-XXE"
+    - pattern: ".*\\blxml\\.etree\\.fromstring\\(.*"
+      subtype: "CWE-611-XXE"
+    - pattern: ".*\\bxml\\.etree\\.ElementTree\\.parse\\(.*"
+      subtype: "CWE-611-XXE"
+    # PHP
+    - pattern: ".*\\bsimplexml_load_string\\(.*"
+      subtype: "CWE-611-XXE"
+    - pattern: ".*\\bloadXML\\(.*"
+      subtype: "CWE-611-XXE"
+    # Java Others
+    - pattern: ".*\\bXMLInputFactory\\.createXMLStreamReader\\(.*"
+      subtype: "CWE-611-XXE"
+    - pattern: ".*\\bTransformerFactory\\.newTransformer\\(.*"
+      subtype: "CWE-611-XXE"
+    - pattern: ".*\\bValidator\\.validate\\(.*"
+      subtype: "CWE-611-XXE"
+  sanitizers:
+    # XML parser disabling features
+    - ".*\\bsetFeature\\(.*"
+
+csrf:
+  sources:
+    # Route annotations acting as entry points for state changes
+    - ".*\\bPostMapping\\b.*"
+    - ".*\\bPutMapping\\b.*"
+    - ".*\\bDeleteMapping\\b.*"
+    - ".*\\bRequestMapping\\b.*"
+    # Or HTTP params explicitly
+    - ".*\\bhttp\\b.*"
+    - ".*\\bcsrf\\b.*"
+    - ".*\\brequest\\b.*"
+  sinks:
+    # Java Spring Security
+    - pattern: ".*\\.csrf\\(\\)\\.disable\\(\\).*"
+      subtype: "CWE-352-CSRF"
+    - pattern: ".*\\bAbstractHttpConfigurer::disable\\b.*"
+      subtype: "CWE-352-CSRF"
+    - pattern: ".*\\.csrf\\(.*->.*\\.disable\\(\\)\\).*"
+      subtype: "CWE-352-CSRF"
+  sanitizers: []
+
+default_credentials:
+  sources:
+    # Assignment sources for creds
+    - ".*\\bpassword\\b.*"
+    - ".*\\bSECRET_KEY\\b.*"
+    - ".*\\bAPI_KEY\\b.*"
+  sinks:
+    # Python
+    - pattern: ".*\\bpassword\\s*=.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*\\bSECRET_KEY\\s*=.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*\\bAPI_KEY\\s*=.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*mysql\\+pymysql://.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*postgresql://.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*mongodb://.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*redis://.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    # JS
+    - pattern: ".*password:\\s*'.*'"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*const\\s+SECRET\\s*=.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*mongoose\\.connect\\(.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    # PHP
+    - pattern: ".*\\$password\\s*=.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*define\\('DB_PASSWORD'.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*mysqli_connect\\(.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+    - pattern: ".*new\\s+PDO\\(.*"
+      subtype: "CWE-798-HARDCODED-CREDENTIALS"
+  sanitizers:
+    - ".*\\bos\\.environ\\.get\\(.*"
+    - ".*\\bos\\.getenv\\(.*"
+    - ".*\\bprocess\\.env\\b.*"
+    - ".*\\b\\$_ENV\\b.*"
+
+xss:
+  sources:
+    - ".*\\brequest\\.args\\b.*"
+    - ".*\\brequest\\.form\\b.*"
+    - ".*\\bgetParameter\\(.*"
+    - ".*\\bRequestParam\\b.*"
+    - ".*\\bPathVariable\\b.*"
+    - ".*\\breq\\.query\\b.*"
+    - ".*\\breq\\.body\\b.*"
+    - ".*\\$_GET\\b.*"
+    - ".*\\$_POST\\b.*"
+  sinks:
+    # Java
+    - pattern: ".*\\bPrintWriter\\.print\\(.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bPrintWriter\\.println\\(.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bPrintWriter\\.write\\(.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bResponseEntity\\b.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bResponseBody\\b.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bStringBuilder\\.append\\(.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bString\\.format\\(.*"
+      subtype: "CWE-79-XSS"
+    # Python
+    - pattern: ".*\\brender_template_string\\(.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bMarkup\\(.*"
+      subtype: "CWE-79-XSS"
+    # JS
+    - pattern: ".*\\.innerHTML\\s*=.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bdocument\\.write\\(.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\.outerHTML\\s*=.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bdangerouslySetInnerHTML\\b.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bv-html\\b.*"
+      subtype: "CWE-79-XSS"
+    # PHP
+    - pattern: ".*\\becho\\b.*"
+      subtype: "CWE-79-XSS"
+    - pattern: ".*\\bprint\\b.*"
+      subtype: "CWE-79-XSS"
+  sanitizers:
+    # Java
+    - ".*\\bencodeForHTML\\(.*"
+    - ".*\\bescapeHtml4\\(.*"
+    # Python
+    - ".*\\brender_template\\(.*"
+    # JS
+    - ".*\\.textContent\\s*=.*"
+    - ".*\\.innerText\\s*=.*"
+    # PHP
+    - ".*\\bhtmlspecialchars\\(.*"
+    - ".*\\bhtmlentities\\(.*"

@@ -1,0 +1,41 @@
+{
+  "scan_metadata": {
+    "repo": "demo-repo",
+    "timestamp": "2026-08-21T14:24:03",
+    "raw_findings": 0,
+    "unique_findings": 0,
+    "per_rule_stats": [
+      {
+        "rule_id": "injection",
+        "source_nodes_matched": 0,
+        "sink_candidates_matched": 0,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "ssrf",
+        "source_nodes_matched": 0,
+        "sink_candidates_matched": 0,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "deserialization",
+        "source_nodes_matched": 0,
+        "sink_candidates_matched": 0,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "path_traversal",
+        "source_nodes_matched": 0,
+        "sink_candidates_matched": 0,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "xxe",
+        "source_nodes_matched": 0,
+        "sink_candidates_matched": 0,
+        "findings_returned": 0
+      }
+    ]
+  },
+  "findings": []
+}

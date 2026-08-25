@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taintlace SAST - Scans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/scans.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">T</div>
+                <div class="brand-title">Taintlace</div>
+            </div>
+            <nav style="flex-grow: 1;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="index.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                    </li>
+                    <li class="sidebar-item active">
+                        <a href="scans.html"><i class="ph ph-shield-search"></i> Scans</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="findings.html"><i class="ph ph-bug"></i> Findings</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="repositories.html"><i class="ph ph-folders"></i> Repositories</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="defectdojo.html"><i class="ph ph-plugs"></i> DefectDojo</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                Taintlace v1.0.0
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>Scan Management</h2>
+                </div>
+            </header>
+
+            <main class="content-body">
+                <div class="scans-layout">
+                    <!-- New Scan Form -->
+                    <section class="glass-panel form-panel">
+                        <h3>Start New Scan</h3>
+                        <form id="form-start-scan" class="scan-form">
+                            <div class="form-group">
+                                <label for="repo_path">Repository Target</label>
+                                <input type="text" id="repo_path" name="repo_path" placeholder="e.g. C:\path\to\repo or git repository url" required>
+                                <span class="help-text">Can be a local absolute path or a remote GitHub URL. GitHub URLs will be cloned/pulled automatically.</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="scan_mode">Scan Mode</label>
+                                    <select id="scan_mode" name="scan_mode">
+                                        <option value="AUTO" selected>(Recommended) AUTO (Smart Router Decision)</option>
+                                        <option value="FULL_SCAN">FULL_SCAN (Complete Analysis)</option>
+                                        <option value="DIFF_SCAN">DIFF_SCAN (Lightweight Diff-scoped Incremental)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cpg_name">CPG Binary Name</label>
+                                    <input type="text" id="cpg_name" name="cpg_name" value="cpg.bin">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="output">Custom Output Name (Optional)</label>
+                                <input type="text" id="output" name="output" placeholder="e.g. custom_scan_result">
+                            </div>
+
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="revalidate" name="revalidate">
+                                    <span>Force LLM Cascade re-validation (ignore cache)</span>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block glow-effect" id="btn-submit-scan">
+                                <i class="ph ph-play-circle"></i> Start Analysis
+                            </button>
+                        </form>
+                    </section>
+
+                    <!-- Scan History / Running list -->
+                    <section class="glass-panel list-panel">
+                        <h3>Scan Run Logs & History</h3>
+                        <div class="table-container">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Repository</th>
+                                        <th>Mode</th>
+                                        <th>Status / Stage</th>
+                                        <th>Progress</th>
+                                        <th>Findings</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="scan-history-list">
+                                    <tr>
+                                        <td colspan="6" class="empty-state">Loading scan runs...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/scans.js"></script>
+</body>
+</html>

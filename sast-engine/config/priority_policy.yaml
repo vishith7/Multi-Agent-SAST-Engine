@@ -1,0 +1,17 @@
+priority_policy:
+  P1:
+    severity_levels:
+      - Critical
+    max_remediation_days: 1
+  P2:
+    severity_levels:
+      - High
+    max_remediation_days: 3
+  P3:
+    severity_levels:
+      - Medium
+    max_remediation_days: 14
+  P4:
+    severity_levels:
+      - Low
+    max_remediation_days: 30

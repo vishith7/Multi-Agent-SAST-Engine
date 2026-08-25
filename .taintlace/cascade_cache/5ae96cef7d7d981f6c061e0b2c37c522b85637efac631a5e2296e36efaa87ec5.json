@@ -1,0 +1,1 @@
+{"subtype": "CWE-798-HARDCODED-CREDENTIALS", "context_hash": "6b676e2917507520c3bb6b65cb3fd9b6f3450630eeb57cf10353fb1aff460eda", "reasoning": "tier3_api_or_parse_error", "verdict": "NEEDS_REVIEW", "verdict_confidence": 0.0, "validation_tier": "tier4_human_review_queue", "validated_at_timestamp": 1787336128.865653}

@@ -1,0 +1,1014 @@
+{
+  "patterns": {
+    "src main java org": {
+      "token": "[PAT_PATTERN_001]",
+      "id": 100000
+    },
+    "sasanlabs service vulnerability": {
+      "token": "[PAT_PATTERN_002]",
+      "id": 100001
+    },
+    "Confidence 0": {
+      "token": "[PAT_PATTERN_003]",
+      "id": 100002
+    },
+    "java org sasanlabs service vulnerability": {
+      "token": "[PAT_PATTERN_004]",
+      "id": 100003
+    },
+    "sasanlabs service": {
+      "token": "[PAT_PATTERN_005]",
+      "id": 100004
+    },
+    "Metadata src main java": {
+      "token": "[PAT_PATTERN_006]",
+      "id": 100005
+    },
+    "main java org sasanlabs": {
+      "token": "[PAT_PATTERN_007]",
+      "id": 100006
+    },
+    "org sasanlabs service vulnerability": {
+      "token": "[PAT_PATTERN_008]",
+      "id": 100007
+    },
+    "service vulnerability": {
+      "token": "[PAT_PATTERN_009]",
+      "id": 100008
+    },
+    "Path Nodes:": {
+      "token": "[PAT_PATTERN_010]",
+      "id": 100009
+    },
+    "org sasanlabs service": {
+      "token": "[PAT_PATTERN_011]",
+      "id": 100010
+    },
+    "Path Nodes": {
+      "token": "[PAT_PATTERN_012]",
+      "id": 100011
+    },
+    "Metadata src main java org": {
+      "token": "[PAT_PATTERN_013]",
+      "id": 100012
+    },
+    "Metadata src": {
+      "token": "[PAT_PATTERN_014]",
+      "id": 100013
+    },
+    "src main java org sasanlabs": {
+      "token": "[PAT_PATTERN_015]",
+      "id": 100014
+    },
+    "Severity: unknown": {
+      "token": "[PAT_PATTERN_016]",
+      "id": 100015
+    },
+    "main java org sasanlabs service vulnerability": {
+      "token": "[PAT_PATTERN_017]",
+      "id": 100016
+    },
+    "Severity unknown": {
+      "token": "[PAT_PATTERN_018]",
+      "id": 100017
+    },
+    "src main java": {
+      "token": "[PAT_PATTERN_019]",
+      "id": 100018
+    },
+    "java org sasanlabs service": {
+      "token": "[PAT_PATTERN_020]",
+      "id": 100019
+    },
+    "Metadata src main": {
+      "token": "[PAT_PATTERN_021]",
+      "id": 100020
+    },
+    "src main java org sasanlabs service": {
+      "token": "[PAT_PATTERN_022]",
+      "id": 100021
+    },
+    "java org sasanlabs": {
+      "token": "[PAT_PATTERN_023]",
+      "id": 100022
+    },
+    "Metadata src main java org sasanlabs": {
+      "token": "[PAT_PATTERN_024]",
+      "id": 100023
+    },
+    "Source @RequestParam": {
+      "token": "[PAT_PATTERN_025]",
+      "id": 100024
+    },
+    "main java org sasanlabs service": {
+      "token": "[PAT_PATTERN_026]",
+      "id": 100025
+    },
+    "1 @RequestParam": {
+      "token": "[PAT_PATTERN_027]",
+      "id": 100026
+    },
+    "main java org": {
+      "token": "[PAT_PATTERN_028]",
+      "id": 100027
+    },
+    "org sasanlabs": {
+      "token": "[PAT_PATTERN_029]",
+      "id": 100028
+    },
+    "ssrf SSRFVulnerability java": {
+      "token": "[PAT_PATTERN_030]",
+      "id": 100029
+    },
+    "Source @RequestParam FILE_URL": {
+      "token": "[PAT_PATTERN_031]",
+      "id": 100030
+    },
+    "FILE_URL String": {
+      "token": "[PAT_PATTERN_032]",
+      "id": 100031
+    },
+    "service vulnerability ssrf": {
+      "token": "[PAT_PATTERN_033]",
+      "id": 100032
+    },
+    "[1] @RequestParam(FILE_URL) String url": {
+      "token": "[PAT_PATTERN_034]",
+      "id": 100033
+    },
+    "u openConnection Metadata": {
+      "token": "[PAT_PATTERN_035]",
+      "id": 100034
+    },
+    "u openConnection Metadata src": {
+      "token": "[PAT_PATTERN_036]",
+      "id": 100035
+    },
+    "url Metadata src main java org": {
+      "token": "[PAT_PATTERN_037]",
+      "id": 100036
+    },
+    "Source @RequestParam FILE_URL String": {
+      "token": "[PAT_PATTERN_038]",
+      "id": 100037
+    },
+    "FILE_URL String url Metadata src main": {
+      "token": "[PAT_PATTERN_039]",
+      "id": 100038
+    },
+    "u openConnection Metadata src main java": {
+      "token": "[PAT_PATTERN_040]",
+      "id": 100039
+    },
+    "openConnection Metadata": {
+      "token": "[PAT_PATTERN_041]",
+      "id": 100040
+    },
+    "sasanlabs service vulnerability ssrf SSRFVulnerability java": {
+      "token": "[PAT_PATTERN_042]",
+      "id": 100041
+    },
+    "url Metadata src main java": {
+      "token": "[PAT_PATTERN_043]",
+      "id": 100042
+    },
+    "String url Metadata": {
+      "token": "[PAT_PATTERN_044]",
+      "id": 100043
+    },
+    "SSRFVulnerability java 85": {
+      "token": "[PAT_PATTERN_045]",
+      "id": 100044
+    },
+    "openConnection Metadata src main java org": {
+      "token": "[PAT_PATTERN_046]",
+      "id": 100045
+    },
+    "ssrf SSRFVulnerability java 85": {
+      "token": "[PAT_PATTERN_047]",
+      "id": 100046
+    },
+    "service vulnerability ssrf SSRFVulnerability java 85": {
+      "token": "[PAT_PATTERN_048]",
+      "id": 100047
+    },
+    "org sasanlabs service vulnerability ssrf SSRFVulnerability": {
+      "token": "[PAT_PATTERN_049]",
+      "id": 100048
+    },
+    "openConnection Metadata src main java": {
+      "token": "[PAT_PATTERN_050]",
+      "id": 100049
+    },
+    "ssrf SSRFVulnerability": {
+      "token": "[PAT_PATTERN_051]",
+      "id": 100050
+    },
+    "@RequestParam FILE_URL String url": {
+      "token": "[PAT_PATTERN_052]",
+      "id": 100051
+    },
+    "FILE_URL String url": {
+      "token": "[PAT_PATTERN_053]",
+      "id": 100052
+    },
+    "u openConnection Metadata src main": {
+      "token": "[PAT_PATTERN_054]",
+      "id": 100053
+    },
+    "CWE CWE-918": {
+      "token": "[PAT_PATTERN_055]",
+      "id": 100054
+    },
+    "CWE: CWE-918": {
+      "token": "[PAT_PATTERN_056]",
+      "id": 100055
+    },
+    "sasanlabs service vulnerability ssrf SSRFVulnerability": {
+      "token": "[PAT_PATTERN_057]",
+      "id": 100056
+    },
+    "service vulnerability ssrf SSRFVulnerability": {
+      "token": "[PAT_PATTERN_058]",
+      "id": 100057
+    },
+    "@RequestParam FILE_URL String url Metadata": {
+      "token": "[PAT_PATTERN_059]",
+      "id": 100058
+    },
+    "1 @RequestParam FILE_URL String": {
+      "token": "[PAT_PATTERN_060]",
+      "id": 100059
+    },
+    "FILE_URL String url Metadata src": {
+      "token": "[PAT_PATTERN_061]",
+      "id": 100060
+    },
+    "java org sasanlabs service vulnerability ssrf": {
+      "token": "[PAT_PATTERN_062]",
+      "id": 100061
+    },
+    "@RequestParam FILE_URL String url Metadata src": {
+      "token": "[PAT_PATTERN_063]",
+      "id": 100062
+    },
+    "url Metadata src": {
+      "token": "[PAT_PATTERN_064]",
+      "id": 100063
+    },
+    "sasanlabs service vulnerability ssrf": {
+      "token": "[PAT_PATTERN_065]",
+      "id": 100064
+    },
+    "vulnerability ssrf": {
+      "token": "[PAT_PATTERN_066]",
+      "id": 100065
+    },
+    "SSRFVulnerability java": {
+      "token": "[PAT_PATTERN_067]",
+      "id": 100066
+    },
+    "@RequestParam(FILE_URL) String url": {
+      "token": "[PAT_PATTERN_068]",
+      "id": 100067
+    },
+    "Source @RequestParam FILE_URL String url Metadata": {
+      "token": "[PAT_PATTERN_069]",
+      "id": 100068
+    },
+    "String url Metadata src": {
+      "token": "[PAT_PATTERN_070]",
+      "id": 100069
+    },
+    "vulnerability ssrf SSRFVulnerability java": {
+      "token": "[PAT_PATTERN_071]",
+      "id": 100070
+    },
+    "1 @RequestParam FILE_URL": {
+      "token": "[PAT_PATTERN_072]",
+      "id": 100071
+    },
+    "String url Metadata src main java": {
+      "token": "[PAT_PATTERN_073]",
+      "id": 100072
+    },
+    "vulnerability ssrf SSRFVulnerability": {
+      "token": "[PAT_PATTERN_074]",
+      "id": 100073
+    },
+    "@RequestParam FILE_URL": {
+      "token": "[PAT_PATTERN_075]",
+      "id": 100074
+    },
+    "String url Metadata src main": {
+      "token": "[PAT_PATTERN_076]",
+      "id": 100075
+    },
+    "url Metadata": {
+      "token": "[PAT_PATTERN_077]",
+      "id": 100076
+    },
+    "Source @RequestParam FILE_URL String url": {
+      "token": "[PAT_PATTERN_078]",
+      "id": 100077
+    },
+    "url Metadata src main": {
+      "token": "[PAT_PATTERN_079]",
+      "id": 100078
+    },
+    "@RequestParam FILE_URL String": {
+      "token": "[PAT_PATTERN_080]",
+      "id": 100079
+    },
+    "openConnection Metadata src": {
+      "token": "[PAT_PATTERN_081]",
+      "id": 100080
+    },
+    "String url": {
+      "token": "[PAT_PATTERN_082]",
+      "id": 100081
+    },
+    "u openConnection": {
+      "token": "[PAT_PATTERN_083]",
+      "id": 100082
+    },
+    "FILE_URL String url Metadata": {
+      "token": "[PAT_PATTERN_084]",
+      "id": 100083
+    },
+    "1 @RequestParam FILE_URL String url": {
+      "token": "[PAT_PATTERN_085]",
+      "id": 100084
+    },
+    "service vulnerability ssrf SSRFVulnerability java": {
+      "token": "[PAT_PATTERN_086]",
+      "id": 100085
+    },
+    "org sasanlabs service vulnerability ssrf": {
+      "token": "[PAT_PATTERN_087]",
+      "id": 100086
+    },
+    "openConnection Metadata src main": {
+      "token": "[PAT_PATTERN_088]",
+      "id": 100087
+    },
+    "vulnerability ssrf SSRFVulnerability java 85": {
+      "token": "[PAT_PATTERN_089]",
+      "id": 100088
+    },
+    "Confidence 0 92": {
+      "token": "[PAT_PATTERN_090]",
+      "id": 100089
+    },
+    "Confidence: 0.92": {
+      "token": "[PAT_PATTERN_091]",
+      "id": 100090
+    },
+    "CWE CWE-611": {
+      "token": "[PAT_PATTERN_092]",
+      "id": 100091
+    },
+    "java org sasanlabs service vulnerability xxe": {
+      "token": "[PAT_PATTERN_093]",
+      "id": 100092
+    },
+    "org sasanlabs service vulnerability xxe": {
+      "token": "[PAT_PATTERN_094]",
+      "id": 100093
+    },
+    "vulnerability xxe XXEVulnerability": {
+      "token": "[PAT_PATTERN_095]",
+      "id": 100094
+    },
+    "service vulnerability xxe XXEVulnerability java": {
+      "token": "[PAT_PATTERN_096]",
+      "id": 100095
+    },
+    "sasanlabs service vulnerability xxe XXEVulnerability": {
+      "token": "[PAT_PATTERN_097]",
+      "id": 100096
+    },
+    "sasanlabs service vulnerability xxe XXEVulnerability java": {
+      "token": "[PAT_PATTERN_098]",
+      "id": 100097
+    },
+    "service vulnerability xxe": {
+      "token": "[PAT_PATTERN_099]",
+      "id": 100098
+    },
+    "service vulnerability xxe XXEVulnerability": {
+      "token": "[PAT_PATTERN_100]",
+      "id": 100099
+    },
+    "vulnerability xxe": {
+      "token": "[PAT_PATTERN_101]",
+      "id": 100100
+    },
+    "xxe XXEVulnerability": {
+      "token": "[PAT_PATTERN_102]",
+      "id": 100101
+    },
+    "sasanlabs service vulnerability xxe": {
+      "token": "[PAT_PATTERN_103]",
+      "id": 100102
+    },
+    "XXEVulnerability java": {
+      "token": "[PAT_PATTERN_104]",
+      "id": 100103
+    },
+    "org sasanlabs service vulnerability xxe XXEVulnerability": {
+      "token": "[PAT_PATTERN_105]",
+      "id": 100104
+    },
+    "xxe XXEVulnerability java": {
+      "token": "[PAT_PATTERN_106]",
+      "id": 100105
+    },
+    "vulnerability xxe XXEVulnerability java": {
+      "token": "[PAT_PATTERN_107]",
+      "id": 100106
+    },
+    "CWE: CWE-611": {
+      "token": "[PAT_PATTERN_108]",
+      "id": 100107
+    },
+    "Sink JAXBElement": {
+      "token": "[PAT_PATTERN_109]",
+      "id": 100108
+    },
+    "JAXBElement Book jaxbUnmarshaller": {
+      "token": "[PAT_PATTERN_110]",
+      "id": 100109
+    },
+    "Book jaxbUnmarshaller": {
+      "token": "[PAT_PATTERN_111]",
+      "id": 100110
+    },
+    "jaxbUnmarshaller unmarshal": {
+      "token": "[PAT_PATTERN_112]",
+      "id": 100111
+    },
+    "JAXBElement Book jaxbUnmarshaller unmarshal": {
+      "token": "[PAT_PATTERN_113]",
+      "id": 100112
+    },
+    "Book jaxbUnmarshaller unmarshal": {
+      "token": "[PAT_PATTERN_114]",
+      "id": 100113
+    },
+    "JAXBElement Book": {
+      "token": "[PAT_PATTERN_115]",
+      "id": 100114
+    },
+    "in Metadata src main java org": {
+      "token": "[PAT_PATTERN_116]",
+      "id": 100115
+    },
+    "in Metadata src main": {
+      "token": "[PAT_PATTERN_117]",
+      "id": 100116
+    },
+    "in Metadata src": {
+      "token": "[PAT_PATTERN_118]",
+      "id": 100117
+    },
+    "in Metadata src main java": {
+      "token": "[PAT_PATTERN_119]",
+      "id": 100118
+    },
+    "in Metadata": {
+      "token": "[PAT_PATTERN_120]",
+      "id": 100119
+    },
+    "3 String url": {
+      "token": "[PAT_PATTERN_121]",
+      "id": 100120
+    },
+    "[5] String url": {
+      "token": "[PAT_PATTERN_122]",
+      "id": 100121
+    },
+    "5 String url": {
+      "token": "[PAT_PATTERN_123]",
+      "id": 100122
+    },
+    "[3] String url": {
+      "token": "[PAT_PATTERN_124]",
+      "id": 100123
+    },
+    "URLConnection urlConnection u openConnection": {
+      "token": "[PAT_PATTERN_125]",
+      "id": 100124
+    },
+    "Sink URLConnection": {
+      "token": "[PAT_PATTERN_126]",
+      "id": 100125
+    },
+    "Sink URLConnection urlConnection u openConnection Metadata": {
+      "token": "[PAT_PATTERN_127]",
+      "id": 100126
+    },
+    "urlConnection u": {
+      "token": "[PAT_PATTERN_128]",
+      "id": 100127
+    },
+    "urlConnection u openConnection Metadata src main": {
+      "token": "[PAT_PATTERN_129]",
+      "id": 100128
+    },
+    "URLConnection urlConnection u": {
+      "token": "[PAT_PATTERN_130]",
+      "id": 100129
+    },
+    "Sink URLConnection urlConnection u openConnection": {
+      "token": "[PAT_PATTERN_131]",
+      "id": 100130
+    },
+    "URLConnection urlConnection = u.openConnection()": {
+      "token": "[PAT_PATTERN_132]",
+      "id": 100131
+    },
+    "urlConnection u openConnection": {
+      "token": "[PAT_PATTERN_133]",
+      "id": 100132
+    },
+    "URLConnection urlConnection u openConnection Metadata src": {
+      "token": "[PAT_PATTERN_134]",
+      "id": 100133
+    },
+    "Sink URLConnection urlConnection": {
+      "token": "[PAT_PATTERN_135]",
+      "id": 100134
+    },
+    "Sink URLConnection urlConnection u": {
+      "token": "[PAT_PATTERN_136]",
+      "id": 100135
+    },
+    "urlConnection u openConnection Metadata src": {
+      "token": "[PAT_PATTERN_137]",
+      "id": 100136
+    },
+    "URLConnection urlConnection u openConnection Metadata": {
+      "token": "[PAT_PATTERN_138]",
+      "id": 100137
+    },
+    "URLConnection urlConnection": {
+      "token": "[PAT_PATTERN_139]",
+      "id": 100138
+    },
+    "urlConnection u openConnection Metadata": {
+      "token": "[PAT_PATTERN_140]",
+      "id": 100139
+    },
+    "u.openConnection()": {
+      "token": "[PAT_PATTERN_141]",
+      "id": 100140
+    },
+    "Sink u openConnection Metadata": {
+      "token": "[PAT_PATTERN_142]",
+      "id": 100141
+    },
+    "Sink u openConnection Metadata src main": {
+      "token": "[PAT_PATTERN_143]",
+      "id": 100142
+    },
+    "Sink u openConnection Metadata src": {
+      "token": "[PAT_PATTERN_144]",
+      "id": 100143
+    },
+    "Sink u openConnection": {
+      "token": "[PAT_PATTERN_145]",
+      "id": 100144
+    },
+    "unmarshal xmlSource": {
+      "token": "[PAT_PATTERN_146]",
+      "id": 100145
+    },
+    "[8] <empty>": {
+      "token": "[PAT_PATTERN_147]",
+      "id": 100146
+    },
+    "xmlSource Metadata src main": {
+      "token": "[PAT_PATTERN_148]",
+      "id": 100147
+    },
+    "spf newSAXParser getXMLReader": {
+      "token": "[PAT_PATTERN_149]",
+      "id": 100148
+    },
+    "unmarshal xmlSource Metadata": {
+      "token": "[PAT_PATTERN_150]",
+      "id": 100149
+    },
+    "spf newSAXParser": {
+      "token": "[PAT_PATTERN_151]",
+      "id": 100150
+    },
+    "xmlSource Metadata": {
+      "token": "[PAT_PATTERN_152]",
+      "id": 100151
+    },
+    "unmarshal xmlSource Metadata src main java": {
+      "token": "[PAT_PATTERN_153]",
+      "id": 100152
+    },
+    "InputStream in": {
+      "token": "[PAT_PATTERN_154]",
+      "id": 100153
+    },
+    "xmlSource Metadata src main java": {
+      "token": "[PAT_PATTERN_155]",
+      "id": 100154
+    },
+    "xmlSource Metadata src": {
+      "token": "[PAT_PATTERN_156]",
+      "id": 100155
+    },
+    "unmarshal xmlSource Metadata src main": {
+      "token": "[PAT_PATTERN_157]",
+      "id": 100156
+    },
+    "unmarshal xmlSource Metadata src": {
+      "token": "[PAT_PATTERN_158]",
+      "id": 100157
+    },
+    "xmlSource Metadata src main java org": {
+      "token": "[PAT_PATTERN_159]",
+      "id": 100158
+    },
+    "newSAXParser getXMLReader": {
+      "token": "[PAT_PATTERN_160]",
+      "id": 100159
+    },
+    "xxe XXEVulnerability java 72": {
+      "token": "[PAT_PATTERN_161]",
+      "id": 100160
+    },
+    "XXEVulnerability java 72": {
+      "token": "[PAT_PATTERN_162]",
+      "id": 100161
+    },
+    "unmarshal in Metadata src": {
+      "token": "[PAT_PATTERN_163]",
+      "id": 100162
+    },
+    "vulnerability xxe XXEVulnerability java 72": {
+      "token": "[PAT_PATTERN_164]",
+      "id": 100163
+    },
+    "unmarshal in Metadata src main": {
+      "token": "[PAT_PATTERN_165]",
+      "id": 100164
+    },
+    "unmarshal in": {
+      "token": "[PAT_PATTERN_166]",
+      "id": 100165
+    },
+    "unmarshal in Metadata src main java": {
+      "token": "[PAT_PATTERN_167]",
+      "id": 100166
+    },
+    "service vulnerability xxe XXEVulnerability java 72": {
+      "token": "[PAT_PATTERN_168]",
+      "id": 100167
+    },
+    "unmarshal in Metadata": {
+      "token": "[PAT_PATTERN_169]",
+      "id": 100168
+    },
+    "request Metadata src main java": {
+      "token": "[PAT_PATTERN_170]",
+      "id": 100169
+    },
+    "Source request Metadata src main": {
+      "token": "[PAT_PATTERN_171]",
+      "id": 100170
+    },
+    "10 xmlSource": {
+      "token": "[PAT_PATTERN_172]",
+      "id": 100171
+    },
+    "request Metadata src main": {
+      "token": "[PAT_PATTERN_173]",
+      "id": 100172
+    },
+    "request Metadata src": {
+      "token": "[PAT_PATTERN_174]",
+      "id": 100173
+    },
+    "request Metadata": {
+      "token": "[PAT_PATTERN_175]",
+      "id": 100174
+    },
+    "request Metadata src main java org": {
+      "token": "[PAT_PATTERN_176]",
+      "id": 100175
+    },
+    "[10] xmlSource": {
+      "token": "[PAT_PATTERN_177]",
+      "id": 100176
+    },
+    "Source request Metadata src": {
+      "token": "[PAT_PATTERN_178]",
+      "id": 100177
+    },
+    "Source request Metadata src main java": {
+      "token": "[PAT_PATTERN_179]",
+      "id": 100178
+    },
+    "Source request Metadata": {
+      "token": "[PAT_PATTERN_180]",
+      "id": 100179
+    },
+    "[2] getInputStream()": {
+      "token": "[PAT_PATTERN_181]",
+      "id": 100180
+    },
+    "[1] request": {
+      "token": "[PAT_PATTERN_182]",
+      "id": 100181
+    },
+    "Source request": {
+      "token": "[PAT_PATTERN_183]",
+      "id": 100182
+    },
+    "2 getInputStream": {
+      "token": "[PAT_PATTERN_184]",
+      "id": 100183
+    },
+    "vulnerability xxe XXEVulnerability java 110": {
+      "token": "[PAT_PATTERN_185]",
+      "id": 100184
+    },
+    "xxe XXEVulnerability java 110": {
+      "token": "[PAT_PATTERN_186]",
+      "id": 100185
+    },
+    "XXEVulnerability java 110": {
+      "token": "[PAT_PATTERN_187]",
+      "id": 100186
+    },
+    "service vulnerability xxe XXEVulnerability java 110": {
+      "token": "[PAT_PATTERN_188]",
+      "id": 100187
+    },
+    "Book jaxbUnmarshaller unmarshal xmlSource Metadata": {
+      "token": "[PAT_PATTERN_189]",
+      "id": 100188
+    },
+    "jaxbUnmarshaller unmarshal xmlSource Metadata src": {
+      "token": "[PAT_PATTERN_190]",
+      "id": 100189
+    },
+    "Book jaxbUnmarshaller unmarshal xmlSource": {
+      "token": "[PAT_PATTERN_191]",
+      "id": 100190
+    },
+    "Book jaxbUnmarshaller unmarshal xmlSource Metadata src": {
+      "token": "[PAT_PATTERN_192]",
+      "id": 100191
+    },
+    "JAXBElement Book jaxbUnmarshaller unmarshal xmlSource": {
+      "token": "[PAT_PATTERN_193]",
+      "id": 100192
+    },
+    "jaxbUnmarshaller unmarshal xmlSource": {
+      "token": "[PAT_PATTERN_194]",
+      "id": 100193
+    },
+    "jaxbUnmarshaller unmarshal xmlSource Metadata src main": {
+      "token": "[PAT_PATTERN_195]",
+      "id": 100194
+    },
+    "jaxbUnmarshaller unmarshal xmlSource Metadata": {
+      "token": "[PAT_PATTERN_196]",
+      "id": 100195
+    },
+    "JAXBElement Book jaxbUnmarshaller unmarshal xmlSource Metadata": {
+      "token": "[PAT_PATTERN_197]",
+      "id": 100196
+    },
+    "9 xmlSource": {
+      "token": "[PAT_PATTERN_198]",
+      "id": 100197
+    },
+    "[9] xmlSource": {
+      "token": "[PAT_PATTERN_199]",
+      "id": 100198
+    },
+    "Sink JAXBElement Book jaxbUnmarshaller unmarshal": {
+      "token": "[PAT_PATTERN_200]",
+      "id": 100199
+    },
+    "Sink JAXBElement Book jaxbUnmarshaller": {
+      "token": "[PAT_PATTERN_201]",
+      "id": 100200
+    },
+    "Sink JAXBElement Book": {
+      "token": "[PAT_PATTERN_202]",
+      "id": 100201
+    },
+    "Sink unmarshal": {
+      "token": "[PAT_PATTERN_203]",
+      "id": 100202
+    },
+    "Source in Metadata src main": {
+      "token": "[PAT_PATTERN_204]",
+      "id": 100203
+    },
+    "Source in Metadata": {
+      "token": "[PAT_PATTERN_205]",
+      "id": 100204
+    },
+    "Source in Metadata src": {
+      "token": "[PAT_PATTERN_206]",
+      "id": 100205
+    },
+    "Source in Metadata src main java": {
+      "token": "[PAT_PATTERN_207]",
+      "id": 100206
+    },
+    "Source getInputStream Metadata src": {
+      "token": "[PAT_PATTERN_208]",
+      "id": 100207
+    },
+    "getInputStream Metadata src main java org": {
+      "token": "[PAT_PATTERN_209]",
+      "id": 100208
+    },
+    "getInputStream Metadata": {
+      "token": "[PAT_PATTERN_210]",
+      "id": 100209
+    },
+    "Source getInputStream Metadata src main java": {
+      "token": "[PAT_PATTERN_211]",
+      "id": 100210
+    },
+    "Source getInputStream Metadata": {
+      "token": "[PAT_PATTERN_212]",
+      "id": 100211
+    },
+    "getInputStream Metadata src main java": {
+      "token": "[PAT_PATTERN_213]",
+      "id": 100212
+    },
+    "getInputStream Metadata src": {
+      "token": "[PAT_PATTERN_214]",
+      "id": 100213
+    },
+    "Source getInputStream": {
+      "token": "[PAT_PATTERN_215]",
+      "id": 100214
+    },
+    "getInputStream Metadata src main": {
+      "token": "[PAT_PATTERN_216]",
+      "id": 100215
+    },
+    "getInputStream()": {
+      "token": "[PAT_PATTERN_217]",
+      "id": 100216
+    },
+    "1 getInputStream": {
+      "token": "[PAT_PATTERN_218]",
+      "id": 100217
+    },
+    "[1] getInputStream()": {
+      "token": "[PAT_PATTERN_219]",
+      "id": 100218
+    },
+    "Source getInputStream Metadata src main": {
+      "token": "[PAT_PATTERN_220]",
+      "id": 100219
+    },
+    "Confidence: 0.93": {
+      "token": "[PAT_PATTERN_221]",
+      "id": 100220
+    },
+    "bookJaxbElement JAXBElement Book": {
+      "token": "[PAT_PATTERN_222]",
+      "id": 100221
+    },
+    "JAXBElement bookJaxbElement JAXBElement Book": {
+      "token": "[PAT_PATTERN_223]",
+      "id": 100222
+    },
+    "Confidence 0 93": {
+      "token": "[PAT_PATTERN_224]",
+      "id": 100223
+    },
+    "JAXBElement bookJaxbElement JAXBElement Book jaxbUnmarshaller unmarshal": {
+      "token": "[PAT_PATTERN_225]",
+      "id": 100224
+    },
+    "Sink JAXBElement bookJaxbElement JAXBElement Book jaxbUnmarshaller": {
+      "token": "[PAT_PATTERN_226]",
+      "id": 100225
+    },
+    "bookJaxbElement JAXBElement": {
+      "token": "[PAT_PATTERN_227]",
+      "id": 100226
+    },
+    "JAXBElement bookJaxbElement JAXBElement": {
+      "token": "[PAT_PATTERN_228]",
+      "id": 100227
+    },
+    "Sink JAXBElement bookJaxbElement JAXBElement Book": {
+      "token": "[PAT_PATTERN_229]",
+      "id": 100228
+    },
+    "JAXBElement bookJaxbElement": {
+      "token": "[PAT_PATTERN_230]",
+      "id": 100229
+    },
+    "Sink JAXBElement bookJaxbElement JAXBElement": {
+      "token": "[PAT_PATTERN_231]",
+      "id": 100230
+    },
+    "JAXBElement bookJaxbElement JAXBElement Book jaxbUnmarshaller": {
+      "token": "[PAT_PATTERN_232]",
+      "id": 100231
+    },
+    "bookJaxbElement JAXBElement Book jaxbUnmarshaller unmarshal": {
+      "token": "[PAT_PATTERN_233]",
+      "id": 100232
+    },
+    "Sink JAXBElement bookJaxbElement": {
+      "token": "[PAT_PATTERN_234]",
+      "id": 100233
+    },
+    "bookJaxbElement JAXBElement Book jaxbUnmarshaller": {
+      "token": "[PAT_PATTERN_235]",
+      "id": 100234
+    },
+    "service vulnerability xxe XXEVulnerability java 77": {
+      "token": "[PAT_PATTERN_236]",
+      "id": 100235
+    },
+    "XXEVulnerability java 77": {
+      "token": "[PAT_PATTERN_237]",
+      "id": 100236
+    },
+    "vulnerability xxe XXEVulnerability java 77": {
+      "token": "[PAT_PATTERN_238]",
+      "id": 100237
+    },
+    "xxe XXEVulnerability java 77": {
+      "token": "[PAT_PATTERN_239]",
+      "id": 100238
+    },
+    "Book jaxbUnmarshaller unmarshal in Metadata src": {
+      "token": "[PAT_PATTERN_240]",
+      "id": 100239
+    },
+    "jaxbUnmarshaller unmarshal in Metadata src main": {
+      "token": "[PAT_PATTERN_241]",
+      "id": 100240
+    },
+    "Book jaxbUnmarshaller unmarshal in": {
+      "token": "[PAT_PATTERN_242]",
+      "id": 100241
+    },
+    "Book jaxbUnmarshaller unmarshal in Metadata": {
+      "token": "[PAT_PATTERN_243]",
+      "id": 100242
+    },
+    "JAXBElement Book jaxbUnmarshaller unmarshal in Metadata": {
+      "token": "[PAT_PATTERN_244]",
+      "id": 100243
+    },
+    "jaxbUnmarshaller unmarshal in": {
+      "token": "[PAT_PATTERN_245]",
+      "id": 100244
+    },
+    "JAXBElement Book jaxbUnmarshaller unmarshal in": {
+      "token": "[PAT_PATTERN_246]",
+      "id": 100245
+    },
+    "jaxbUnmarshaller unmarshal in Metadata src": {
+      "token": "[PAT_PATTERN_247]",
+      "id": 100246
+    },
+    "jaxbUnmarshaller unmarshal in Metadata": {
+      "token": "[PAT_PATTERN_248]",
+      "id": 100247
+    },
+    "[12] String url": {
+      "token": "[PAT_PATTERN_249]",
+      "id": 100248
+    },
+    "12 String url": {
+      "token": "[PAT_PATTERN_250]",
+      "id": 100249
+    },
+    "19 URL url": {
+      "token": "[PAT_PATTERN_251]",
+      "id": 100250
+    },
+    "[19] URL url": {
+      "token": "[PAT_PATTERN_252]",
+      "id": 100251
+    }
+  },
+  "next_id": 100252,
+  "next_index": 253
+}

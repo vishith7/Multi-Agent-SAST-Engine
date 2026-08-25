@@ -1,0 +1,6 @@
+{
+  "python.analysis.extraPaths": [
+    "./sast-engine"
+  ],
+  "java.compile.nullAnalysis.mode": "automatic"
+}

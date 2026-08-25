@@ -1,0 +1,31 @@
+/* DefectDojo Page Styling */
+
+.dojo-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .dojo-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.status-box {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+}
+
+.status-box .badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}

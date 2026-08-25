@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taintlace SAST - Finding Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/findings.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">T</div>
+                <div class="brand-title">Taintlace</div>
+            </div>
+            <nav style="flex-grow: 1;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="index.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                    </li>
+                    <li class="sidebar-item active">
+                        <a href="scans.html"><i class="ph ph-shield-search"></i> Scans</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="findings.html"><i class="ph ph-bug"></i> Findings</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="repositories.html"><i class="ph ph-folders"></i> Repositories</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="defectdojo.html"><i class="ph ph-plugs"></i> DefectDojo</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                Taintlace v1.0.0
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <header class="main-header">
+                <div class="header-title" style="display: flex; align-items: center; gap: 1rem;">
+                    <a id="btn-back" href="scans.html" class="btn btn-secondary" style="padding: 0.375rem 0.75rem;"><i class="ph ph-arrow-left"></i> Back</a>
+                    <h2>Finding Details</h2>
+                </div>
+                <div class="finding-actions-header">
+                    <a id="btn-review-dd" href="#" target="_blank" class="btn btn-primary" style="display: none; align-items: center; gap: 0.5rem; text-decoration: none;"><i class="ph ph-plugs"></i> Review in DefectDojo</a>
+                </div>
+            </header>
+            
+            <main class="content-body">
+                <!-- Finding Overview Card -->
+                <div class="glass-panel summary-panel" style="margin-bottom: 1.5rem;">
+                    <div class="panel-header-flex">
+                        <div>
+                            <span class="badge badge-critical" id="badge-severity">Critical</span>
+                            <span class="badge badge-success" id="badge-verdict" style="margin-left: 0.5rem;">Valid</span>
+                            <span class="badge" id="badge-defectdojo-status" style="margin-left: 0.5rem;">Awaiting Human Verification</span>
+                        </div>
+                        <div class="sla-text" id="sla-remaining-text">SLA STATUS: -</div>
+                    </div>
+                    
+                    <h3 id="finding-title" style="font-size: 1.35rem; margin-top: 0.75rem; margin-bottom: 0.5rem;">Vulnerability Title</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-secondary); font-family: var(--font-mono); margin-bottom: 1rem; overflow-wrap: break-word;" id="finding-fingerprint">FINGERPRINT: -</p>
+
+                    <div class="meta-grid-findings">
+                        <div class="meta-cell">
+                            <span class="label">Category</span>
+                            <span class="val" id="val-category">-</span>
+                        </div>
+                        <div class="meta-cell">
+                            <span class="label">Subtype</span>
+                            <span class="val" id="val-subtype">-</span>
+                        </div>
+                        <div class="meta-cell">
+                            <span class="label">Confidence</span>
+                            <span class="val" id="val-confidence">-</span>
+                        </div>
+                        <div class="meta-cell">
+                            <span class="label">Priority</span>
+                            <span class="val" id="val-priority">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="findings-details-layout">
+                    <!-- Left: Code Flow Trace & Exploit PoC -->
+                    <div class="details-left">
+                        <!-- Code Flow Trace -->
+                        <div class="glass-panel panel-trace" style="margin-bottom: 1.5rem;">
+                            <h3>Source-to-Sink Dataflow Trace</h3>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">Track the variables and inputs traversing from the source method parameter down to the security-sensitive sink function.</p>
+                            
+                            <div class="trace-flow-list" id="trace-flow-list">
+                                <!-- Steps will be populated dynamically -->
+                                <div class="trace-flow-node">
+                                    <div class="node-index">1</div>
+                                    <div class="node-content">
+                                        <div class="node-meta">File: src/main/java/App.java : Line 12</div>
+                                        <pre class="node-code"><code>String input = req.getParameter("cmd");</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proof of Concept -->
+                        <div class="glass-panel panel-poc" id="panel-poc-container" style="display: none;">
+                            <h3>Proof of Concept Exploit</h3>
+                            <div class="poc-badge-container">
+                                <span class="badge badge-warning">NOT EXECUTED</span>
+                            </div>
+                            <div class="poc-body">
+                                <div class="form-group" style="margin-top: 1rem;">
+                                    <label>Exploit Payload / Inputs</label>
+                                    <pre class="code-block" id="poc-payload"><code>Payload text</code></pre>
+                                </div>
+                                <div class="form-group" style="margin-top: 1rem;">
+                                    <label>Instructions & Description</label>
+                                    <p id="poc-instructions" style="font-size: 0.875rem; color: var(--text-secondary); white-space: pre-wrap;">Instructions text</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: LLM Validation & Reasoning -->
+                    <div class="details-right">
+                        <div class="glass-panel panel-reasoning">
+                            <h3>LLM Validation Diagnostics</h3>
+                            <div class="reasoning-meta" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+                                    <span style="color: var(--text-secondary); font-weight: 500;">Validation Tier</span>
+                                    <strong id="reasoning-tier">-</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+                                    <span style="color: var(--text-secondary); font-weight: 500;">Verdict Confidence</span>
+                                    <strong id="reasoning-confidence">-</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+                                    <span style="color: var(--text-secondary); font-weight: 500;">CWE ID</span>
+                                    <strong id="intel-cwe-id">-</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+                                    <span style="color: var(--text-secondary); font-weight: 500;">EPSS Score / %</span>
+                                    <strong id="intel-epss">-</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+                                    <span style="color: var(--text-secondary); font-weight: 500;">CISA KEV Status</span>
+                                    <strong id="intel-kev">-</strong>
+                                </div>
+                            </div>
+                            
+                            <h4>Validation Reasoning</h4>
+                            <p id="reasoning-text" style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-top: 0.5rem; margin-bottom: 1rem; white-space: pre-wrap;">Loading analysis...</p>
+
+                            <h4>AI Remediation Recommendation</h4>
+                            <p id="remediation-recommendation" style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-top: 0.5rem; white-space: pre-wrap;">Loading recommendation...</p>
+                        </div>
+
+                        <!-- Proposed Remediation & Fix Triage -->
+                        <div class="glass-panel panel-fix" id="panel-remediation-container" style="margin-top: 1.5rem; display: none;">
+                            <h3>Proposed Remediation Fix</h3>
+                            <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+                                    <span style="color: var(--text-secondary); font-weight: 500;">Fix Confidence</span>
+                                    <strong id="fix-confidence">-</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+                                    <span style="color: var(--text-secondary); font-weight: 500;">Fix Status</span>
+                                    <strong id="fix-status">-</strong>
+                                </div>
+                            </div>
+                            
+                            <h4>Remediation Strategy</h4>
+                            <p id="remediation-strategy" style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-top: 0.5rem; margin-bottom: 1rem;"></p>
+                            
+                            <h4>Proposed Patch Diff</h4>
+                            <pre class="code-block" style="font-family: var(--font-mono); font-size: 0.75rem; background: var(--bg-card); color: var(--text-secondary); padding: 0.75rem; border-radius: 4px; overflow-x: auto; margin-top: 0.5rem; margin-bottom: 1.5rem;"><code id="fix-patch-code">Diff content</code></pre>
+                            
+                            <div class="triage-controls" style="display: flex; flex-direction: column; gap: 0.75rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                                <label style="font-size: 0.875rem; font-weight: 600; color: var(--text-secondary);">Human Triage Decision</label>
+                                <textarea id="triage-comment" placeholder="Add optional reviewer comment/notes..." class="input-text" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-primary); resize: vertical; font-size: 0.875rem;"></textarea>
+                                
+                                <div style="display: flex; gap: 0.5rem; justify-content: space-between;">
+                                    <button id="btn-approve-fix" class="btn btn-success" style="flex: 1; justify-content: center;"><i class="ph ph-check-circle"></i> Approve & Apply</button>
+                                    <button id="btn-reject-fix" class="btn btn-critical" style="flex: 1; justify-content: center;"><i class="ph ph-x-circle"></i> Reject</button>
+                                </div>
+                                <button id="btn-needs-review-fix" class="btn btn-secondary" style="width: 100%; justify-content: center;"><i class="ph ph-warning"></i> Needs Review</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/finding-details.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taintlace SAST - Repositories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">T</div>
+                <div class="brand-title">Taintlace</div>
+            </div>
+            <nav style="flex-grow: 1;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="index.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="scans.html"><i class="ph ph-shield-search"></i> Scans</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="findings.html"><i class="ph ph-bug"></i> Findings</a>
+                    </li>
+                    <li class="sidebar-item active">
+                        <a href="repositories.html"><i class="ph ph-folders"></i> Repositories</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="defectdojo.html"><i class="ph ph-plugs"></i> DefectDojo</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                Taintlace v1.0.0
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>Scanned Repositories</h2>
+                </div>
+            </header>
+
+            <main class="content-body">
+                <section class="glass-panel repositories-panel">
+                    <h3>Known Repositories</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem;">The following repositories have been analyzed by Taintlace. You can quickly re-trigger scans from here.</p>
+                    
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Location / Origin Path</th>
+                                    <th>Last Scanned</th>
+                                    <th>Strategy</th>
+                                    <th>Finding Count</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="repositories-list">
+                                <tr>
+                                    <td colspan="7" class="empty-state">Loading repositories...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/repositories.js"></script>
+</body>
+</html>

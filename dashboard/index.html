@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taintlace Findings Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="container">
+        <header class="glass-panel main-header">
+            <div class="header-content">
+                <div class="brand">
+                    <div class="logo"></div>
+                    <h1>Taintlace</h1>
+                </div>
+                <div class="header-actions">
+                    <button id="btn-push-defectdojo" class="btn-primary glow-effect">Push to DefectDojo</button>
+                </div>
+                <div class="repo-info" id="repo-info">
+                    <h2 id="repo-name">Loading...</h2>
+                    <p class="timestamp" id="scan-timestamp">Waiting for data...</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="stats-grid" id="stats-container">
+            <div class="stat-card glass-panel">
+                <h3><i class="ph ph-bug"></i> Total Findings</h3>
+                <div class="stat-value" id="total-findings">0</div>
+            </div>
+            <div class="stat-card glass-panel">
+                <h3><i class="ph ph-warning-circle"></i> High Confidence</h3>
+                <div class="stat-value text-accent" id="high-confidence">0</div>
+            </div>
+            <div class="stat-card glass-panel">
+                <h3><i class="ph ph-code"></i> PoCs Generated</h3>
+                <div class="stat-value text-success" id="poc-count">0</div>
+            </div>
+        </section>
+
+        <section class="telemetry-panel glass-panel">
+            <h3>Engine Telemetry</h3>
+            <div class="telemetry-grid" id="telemetry-grid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <main class="findings-container">
+            <div class="findings-header">
+                <h2>Vulnerability Findings</h2>
+                <div class="filters" style="display: flex; gap: 10px;">
+                    <select id="filter-verdict" class="glass-select">
+                        <option value="ALL">All Verdicts</option>
+                        <option value="VALID">Valid</option>
+                        <option value="NEEDS_REVIEW">Needs Review</option>
+                        <option value="FALSE_POSITIVE">False Positive</option>
+                    </select>
+                    <select id="filter-poc" class="glass-select">
+                        <option value="ALL">All Findings</option>
+                        <option value="HAS_POC">Has PoC</option>
+                        <option value="NO_POC">No PoC</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="findings-list" id="findings-list">
+                <!-- Cards will be injected here -->
+                <div class="loading-state">Loading findings data...</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Detailed Finding View -->
+    <div class="modal-backdrop" id="finding-modal">
+        <div class="modal-content glass-panel">
+            <button class="close-btn" id="modal-close"><i class="ph ph-x"></i></button>
+            <div class="modal-header">
+                <span class="badge" id="modal-verdict"></span>
+                <h2 id="modal-title">Finding Details</h2>
+            </div>
+            <div class="modal-body">
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Category</span>
+                        <span class="meta-value" id="modal-category"></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Subtype</span>
+                        <span class="meta-value" id="modal-subtype"></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Confidence</span>
+                        <span class="meta-value" id="modal-confidence"></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Severity</span>
+                        <span class="meta-value" id="modal-severity"></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Priority</span>
+                        <span class="meta-value" id="modal-priority"></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">SLA Target</span>
+                        <span class="meta-value" id="modal-sla"></span>
+                    </div>
+                </div>
+
+                <div class="section-title">Source to Sink Trace</div>
+                <div class="code-trace" id="modal-trace"></div>
+
+                <div class="section-title">LLM Reasoning</div>
+                <div class="reasoning-block" id="modal-reasoning"></div>
+
+                <div id="poc-section" class="poc-section" style="display: none;">
+                    <div class="section-title">Proof of Concept Exploit</div>
+                    <div class="poc-block" id="modal-poc"></div>
+                </div>
+
+                <div class="modal-actions" style="margin-top: 2rem; display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem;">
+                    <button id="modal-btn-push" class="btn-primary glow-effect">Push to DefectDojo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

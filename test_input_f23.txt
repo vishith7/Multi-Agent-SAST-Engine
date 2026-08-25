@@ -1,0 +1,11 @@
+1
+tests/synthetic_scan
+2
+n
+../../bad_file.json
+1
+tests/synthetic_scan
+3
+n
+
+3

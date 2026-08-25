@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taintlace SAST - DefectDojo Integration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/defectdojo.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">T</div>
+                <div class="brand-title">Taintlace</div>
+            </div>
+            <nav style="flex-grow: 1;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="index.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="scans.html"><i class="ph ph-shield-search"></i> Scans</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="findings.html"><i class="ph ph-bug"></i> Findings</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="repositories.html"><i class="ph ph-folders"></i> Repositories</a>
+                    </li>
+                    <li class="sidebar-item active">
+                        <a href="defectdojo.html"><i class="ph ph-plugs"></i> DefectDojo</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                Taintlace v1.0.0
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>DefectDojo Integration</h2>
+                </div>
+            </header>
+
+            <main class="content-body">
+                <div class="dojo-layout">
+                    <div class="dojo-left">
+                        <!-- Config Status -->
+                        <section class="glass-panel status-panel">
+                            <h3>Integration Status</h3>
+                            <div class="status-box" id="status-box-indicator">
+                                <span class="badge" id="indicator-badge">Checking Status...</span>
+                            </div>
+    
+                            <div class="info-list" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                                    <span style="font-weight: 500; color: var(--text-secondary);">Server Endpoint</span>
+                                    <strong id="dd-url-val">-</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                                    <span style="font-weight: 500; color: var(--text-secondary);">Engagement ID</span>
+                                    <strong id="dd-engagement-val">-</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                                    <span style="font-weight: 500; color: var(--text-secondary);">API Token Status</span>
+                                    <strong id="dd-token-val">-</strong>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Configure Credentials Form -->
+                        <section class="glass-panel config-form-panel" style="margin-top: 1.5rem;">
+                            <h3>Configure Credentials</h3>
+                            <form id="dd-config-form" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+                                <div class="form-group">
+                                    <label for="dd-url-input" style="font-size: 0.875rem; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 0.35rem;">Server Endpoint URL *</label>
+                                    <input type="url" id="dd-url-input" required placeholder="http://localhost:8080" class="form-control" style="width: 100%; padding: 0.625rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 0.875rem;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dd-token-input" style="font-size: 0.875rem; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 0.35rem;">API Token / Key *</label>
+                                    <input type="password" id="dd-token-input" required placeholder="Enter API token" class="form-control" style="width: 100%; padding: 0.625rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 0.875rem;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dd-org-input" style="font-size: 0.875rem; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 0.35rem;">Organization Name (Optional)</label>
+                                    <input type="text" id="dd-org-input" placeholder="Multi-Agentic SAST Engine" class="form-control" style="width: 100%; padding: 0.625rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 0.875rem;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dd-default-eng-input" style="font-size: 0.875rem; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 0.35rem;">Default Engagement Name (Optional)</label>
+                                    <input type="text" id="dd-default-eng-input" placeholder="Continuous SAST Scanning" class="form-control" style="width: 100%; padding: 0.625rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 0.875rem;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dd-engagement-input" style="font-size: 0.875rem; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 0.35rem;">Existing Engagement ID (Optional)</label>
+                                    <input type="number" id="dd-engagement-input" placeholder="Leave blank for auto-provisioning" class="form-control" style="width: 100%; padding: 0.625rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 0.875rem;">
+                                </div>
+                                
+                                <div id="dd-form-error" style="color: var(--critical); font-size: 0.875rem; display: none; padding: 0.5rem; background-color: rgba(239, 68, 68, 0.05); border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.2); line-height: 1.4;"></div>
+                                <div id="dd-form-success" style="color: var(--success); font-size: 0.875rem; display: none; padding: 0.5rem; background-color: rgba(16, 185, 129, 0.05); border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.2); line-height: 1.4;"></div>
+                                
+                                <button type="submit" class="btn btn-primary" id="btn-save-dd-config" style="align-self: flex-start;">
+                                    <i class="ph ph-floppy-disk"></i> Verify & Save
+                                </button>
+                            </form>
+                        </section>
+                    </div>
+
+                    <!-- Configuration Instructions -->
+                    <section class="glass-panel instructions-panel">
+                        <h3>How to Configure</h3>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                            Taintlace uses the system keyring (or authoritative environment variables) to encrypt and store integration credentials. This keeps sensitive API tokens safe off web browsers.
+                        </p>
+                        
+                        <div style="background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                            <h4 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.5rem;"><i class="ph ph-terminal"></i> Set Credentials via CLI</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Open your terminal in the repository and run:</p>
+                            <pre class="code-block" style="padding: 0.5rem; font-size: 0.75rem; background-color: white;"><code>python cli.py configure-defectdojo</code></pre>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">The wizard will verify connection endpoints and securely commit keys to the host keychain.</p>
+                        </div>
+
+                        <div style="background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem;">
+                            <h4 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.5rem;"><i class="ph ph-cpu"></i> Autorun Environment Setup</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5;">Alternatively, you can export keys as standard environment variables in your <code>.env</code> file:</p>
+                            <pre class="code-block" style="padding: 0.5rem; font-size: 0.75rem; background-color: white; margin-top: 0.5rem;"><code>DEFECTDOJO_URL=http://localhost:8080
+DEFECTDOJO_API_KEY=your_secure_api_token
+DEFECTDOJO_ENGAGEMENT_ID=1</code></pre>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/defectdojo.js"></script>
+</body>
+</html>

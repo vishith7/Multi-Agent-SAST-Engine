@@ -1,0 +1,122 @@
+/* Dashboard Specific Styles */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+/* Severity Distribution Bar Chart */
+.sev-bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.25rem;
+}
+
+.sev-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sev-bar-item .label {
+    width: 70px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.sev-bar-item .bar-container {
+    flex-grow: 1;
+    height: 10px;
+    background-color: var(--bg-color);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.sev-bar-item .bar {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bar-critical { background-color: var(--critical); }
+.bar-high { background-color: var(--high); }
+.bar-medium { background-color: var(--medium); }
+.bar-low { background-color: var(--low); }
+
+.sev-bar-item .count {
+    width: 30px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: right;
+    color: var(--text-primary);
+}
+
+/* SLA Matrix */
+.sla-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.25rem;
+    text-align: center;
+}
+
+.matrix-item {
+    padding: 0.75rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.matrix-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    margin-bottom: 0.25rem;
+}
+
+.matrix-val {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.bullet-red { background-color: var(--critical); }
+.bullet-orange { background-color: var(--high); }
+.bullet-green { background-color: var(--success); }
+
+.text-red { color: var(--critical); }
+.text-orange { color: var(--high); }
+.text-green { color: var(--success); }
+
+.btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 6px;
+}

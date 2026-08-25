@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taintlace SAST - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">T</div>
+                <div class="brand-title">Taintlace</div>
+            </div>
+            <nav style="flex-grow: 1;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item active">
+                        <a href="index.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="scans.html"><i class="ph ph-shield-search"></i> Scans</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="findings.html"><i class="ph ph-bug"></i> Findings</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="repositories.html"><i class="ph ph-folders"></i> Repositories</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="defectdojo.html"><i class="ph ph-plugs"></i> DefectDojo</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                Taintlace v1.0.0
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="header-status">
+                    <span class="status-indicator"></span>
+                    <span id="health-status">Checking Engine...</span>
+                </div>
+            </header>
+
+            <main class="content-body">
+                <!-- Summary Stats Cards -->
+                <section class="stats-grid" id="stats-container">
+                    <div class="stat-card glass-panel">
+                        <div class="stat-icon primary"><i class="ph ph-shield-search"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-scans">0</span>
+                            <span class="stat-label">Total Scans</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <div class="stat-icon danger"><i class="ph ph-bug"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-findings">0</span>
+                            <span class="stat-label">Total Findings</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <div class="stat-icon warning"><i class="ph ph-clock-counter-clockwise"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-overdue">0</span>
+                            <span class="stat-label">Overdue SLAs</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <div class="stat-icon success"><i class="ph ph-checks"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-on-track">0</span>
+                            <span class="stat-label">On-Track SLAs</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="dashboard-grid">
+                    <!-- Severity Breakdown & SLA Posture -->
+                    <div class="dashboard-left">
+                        <div class="glass-panel panel-severity">
+                            <h3>Severity Distribution</h3>
+                            <div class="sev-bar-chart">
+                                <div class="sev-bar-item">
+                                    <span class="label">Critical</span>
+                                    <div class="bar-container">
+                                        <div class="bar bar-critical" id="bar-critical" style="width: 0%"></div>
+                                    </div>
+                                    <span class="count" id="count-critical">0</span>
+                                </div>
+                                <div class="sev-bar-item">
+                                    <span class="label">High</span>
+                                    <div class="bar-container">
+                                        <div class="bar bar-high" id="bar-high" style="width: 0%"></div>
+                                    </div>
+                                    <span class="count" id="count-high">0</span>
+                                </div>
+                                <div class="sev-bar-item">
+                                    <span class="label">Medium</span>
+                                    <div class="bar-container">
+                                        <div class="bar bar-medium" id="bar-medium" style="width: 0%"></div>
+                                    </div>
+                                    <span class="count" id="count-medium">0</span>
+                                </div>
+                                <div class="sev-bar-item">
+                                    <span class="label">Low</span>
+                                    <div class="bar-container">
+                                        <div class="bar bar-low" id="bar-low" style="width: 0%"></div>
+                                    </div>
+                                    <span class="count" id="count-low">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel panel-sla" style="margin-top: 1.5rem;">
+                            <h3>SLA Remediation Target Status</h3>
+                            <div class="sla-matrix">
+                                <div class="matrix-item">
+                                    <div class="matrix-label"><span class="bullet bullet-red"></span> Overdue</div>
+                                    <div class="matrix-val text-red" id="sla-overdue">0</div>
+                                </div>
+                                <div class="matrix-item">
+                                    <div class="matrix-label"><span class="bullet bullet-orange"></span> Approaching (3d)</div>
+                                    <div class="matrix-val text-orange" id="sla-approaching">0</div>
+                                </div>
+                                <div class="matrix-item">
+                                    <div class="matrix-label"><span class="bullet bullet-green"></span> On Track</div>
+                                    <div class="matrix-val text-green" id="sla-ontrack">0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Scans -->
+                    <div class="dashboard-right">
+                        <div class="glass-panel panel-recent">
+                            <div class="panel-header">
+                                <h3>Recent Scans</h3>
+                                <a href="scans.html" class="btn btn-secondary btn-sm">View All</a>
+                            </div>
+                            <div class="table-container">
+                                <table class="custom-table" id="table-recent-scans">
+                                    <thead>
+                                        <tr>
+                                            <th>Repo</th>
+                                            <th>Type</th>
+                                            <th>Status</th>
+                                            <th>Findings</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recent-scans-list">
+                                        <tr>
+                                            <td colspan="5" class="empty-state">Loading scans...</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

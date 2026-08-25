@@ -1,0 +1,9 @@
+cli.py
+setup.py
+taintlace.egg-info/PKG-INFO
+taintlace.egg-info/SOURCES.txt
+taintlace.egg-info/dependency_links.txt
+taintlace.egg-info/entry_points.txt
+taintlace.egg-info/requires.txt
+taintlace.egg-info/top_level.txt
+tests/test_anonymization.py

@@ -1,0 +1,37 @@
+escalation_matrix:
+  P1:
+    sla_days: 1
+    escalations:
+      - time_window_hours: 12
+        role: "Security Lead"
+        action: "notification"
+      - time_window_hours: 24
+        role: "Engineering Manager"
+        action: "escalation"
+  P2:
+    sla_days: 3
+    escalations:
+      - time_window_hours: 48
+        role: "Security Lead"
+        action: "notification"
+      - time_window_hours: 72
+        role: "Engineering Manager"
+        action: "escalation"
+  P3:
+    sla_days: 14
+    escalations:
+      - time_window_hours: 240
+        role: "Security Lead"
+        action: "notification"
+      - time_window_hours: 336
+        role: "Engineering Manager"
+        action: "escalation"
+  P4:
+    sla_days: 30
+    escalations:
+      - time_window_hours: 600
+        role: "Security Lead"
+        action: "notification"
+      - time_window_hours: 720
+        role: "Engineering Manager"
+        action: "escalation"

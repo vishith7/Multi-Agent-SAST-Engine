@@ -1,0 +1,344 @@
+{
+  "scan_metadata": {
+    "repo": "superAeye",
+    "timestamp": "2026-08-23T13:43:58.583231",
+    "raw_findings": 18,
+    "unique_findings": 4,
+    "scan_type": "full",
+    "per_rule_stats": [
+      {
+        "rule_id": "injection",
+        "source_nodes_matched": 0,
+        "sink_candidates_matched": 11,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "ssrf",
+        "source_nodes_matched": 0,
+        "sink_candidates_matched": 2,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "deserialization",
+        "source_nodes_matched": 6,
+        "sink_candidates_matched": 9,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "path_traversal",
+        "source_nodes_matched": 0,
+        "sink_candidates_matched": 37,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "xxe",
+        "source_nodes_matched": 0,
+        "sink_candidates_matched": 0,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "csrf",
+        "source_nodes_matched": 203,
+        "sink_candidates_matched": 0,
+        "findings_returned": 0
+      },
+      {
+        "rule_id": "default_credentials",
+        "source_nodes_matched": 41,
+        "sink_candidates_matched": 4,
+        "findings_returned": 18
+      },
+      {
+        "rule_id": "xss",
+        "source_nodes_matched": 0,
+        "sink_candidates_matched": 111,
+        "findings_returned": 0
+      }
+    ],
+    "defectdojo_engagement_id": "1",
+    "defectdojo_test_id": "3",
+    "defectdojo_upload_status": "success",
+    "defectdojo_last_attempt": "2026-08-23T14:58:50.328174",
+    "defectdojo_last_error": null
+  },
+  "findings": [
+    {
+      "category": "default_credentials",
+      "subtype": "CWE-798-HARDCODED-CREDENTIALS",
+      "path": [
+        {
+          "code": "user",
+          "file": "fetch_attendance.py",
+          "line": 29
+        },
+        {
+          "code": "host",
+          "file": "fetch_attendance.py",
+          "line": 29
+        },
+        {
+          "code": "client",
+          "file": "fetch_attendance.py",
+          "line": 29
+        },
+        {
+          "code": "client.connect(host, username = user, password = pwd)",
+          "file": "fetch_attendance.py",
+          "line": 29
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<VAR_1>",
+        "<VAR_2>",
+        "<VAR_3>",
+        "<VAR_3>.<ATTR_1>(<VAR_2>,<VAR_4>=<VAR_1>,<VAR_5>=<VAR_6>)"
+      ],
+      "fingerprint": "4d69870b459407b2663f846f0f7cb06676d9d287499b81703f96bfa249a8a644",
+      "context_hash": "41ce51b10ae6f5b6b385dfe65ae517a37d9a9c38a16ef590dd6224a875dca047",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "fetch_attendance.py",
+          "source_line": 29,
+          "sink_file": "fetch_attendance.py",
+          "sink_line": 29
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 1.0,
+      "reasoning": "Tier 1: Path length is 0 (Source and sink on same line).",
+      "validation_tier": "tier1_heuristic_gate",
+      "generated_poc": {
+        "poc_type": "SSH Command",
+        "payload": "sshpass -p \"HardC0deD!\" ssh user@192.168.1.100",
+        "instructions": "Run this command (install sshpass if needed) replacing the IP with the actual target host. It uses the hard\u2011coded password found in the script to obtain SSH access to the server."
+      },
+      "scan_id": "findings_superAeye_2026-08-23_133911",
+      "repo": "superAeye",
+      "severity": "Medium",
+      "sla_status": {
+        "status": "unknown",
+        "days_remaining": null,
+        "overdue": false,
+        "approaching": false,
+        "deadline": null
+      },
+      "defectdojo_id": 5,
+      "defectdojo_sla_deadline": "2026-11-21",
+      "defectdojo_sla_status": "active",
+      "defectdojo_status": "Verified",
+      "defectdojo_url": "http://localhost:8080/finding/5"
+    },
+    {
+      "category": "default_credentials",
+      "subtype": "CWE-798-HARDCODED-CREDENTIALS",
+      "path": [
+        {
+          "code": "'192.168.1.7'",
+          "file": "check_older_dates.py",
+          "line": 6
+        },
+        {
+          "code": "ssh",
+          "file": "check_older_dates.py",
+          "line": 6
+        },
+        {
+          "code": "ssh.connect('192.168.1.7', username = 'admin', password = '1234567890')",
+          "file": "check_older_dates.py",
+          "line": 6
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<STR>",
+        "<VAR_1>",
+        "<VAR_1>.<ATTR_1>(<STR>,<VAR_2>=<STR>,<VAR_3>=<STR>)"
+      ],
+      "fingerprint": "8a59ec3936e917dcf2fd5d7409de43855a4b6099d388ec8126486d685fe61aa4",
+      "context_hash": "cf8a849eff33cac90e89d11ef4791fe8fec631588b7c7b95afe1b5854e2a973e",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "check_older_dates.py",
+          "source_line": 6,
+          "sink_file": "check_older_dates.py",
+          "sink_line": 6
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 1.0,
+      "reasoning": "Tier 1: Path length is 0 (Source and sink on same line).",
+      "validation_tier": "tier1_heuristic_gate",
+      "generated_poc": {
+        "poc_type": "SSH Command",
+        "payload": "sshpass -p '[REDACTED_SECRET]' ssh -o StrictHostKeyChecking=no admin@192.168.1.7",
+        "instructions": "Execute this command from any host that can reach 192.168.1.7. It uses the hard\u2011coded password to log in via SSH and, if the service is running, provides an interactive shell on the target machine."
+      },
+      "scan_id": "findings_superAeye_2026-08-23_133911",
+      "repo": "superAeye",
+      "severity": "Medium",
+      "sla_status": {
+        "status": "on-track",
+        "days_remaining": 90,
+        "overdue": false,
+        "approaching": false,
+        "deadline": "2026-11-21"
+      },
+      "defectdojo_id": 3,
+      "defectdojo_sla_deadline": "2026-11-21",
+      "defectdojo_sla_status": "active",
+      "defectdojo_status": "Verified",
+      "defectdojo_url": "http://localhost:8080/finding/3"
+    },
+    {
+      "category": "default_credentials",
+      "subtype": "UNKNOWN",
+      "path": [
+        {
+          "code": "data",
+          "file": "main.py",
+          "line": 620
+        },
+        {
+          "code": "data.get('password', '')",
+          "file": "main.py",
+          "line": 620
+        },
+        {
+          "code": "tmp0",
+          "file": "main.py",
+          "line": 620
+        },
+        {
+          "code": "tmp0",
+          "file": "main.py",
+          "line": 620
+        },
+        {
+          "code": "data.get('password', '').encode()",
+          "file": "main.py",
+          "line": 620
+        },
+        {
+          "code": "tmp0 = data.get('password', '') data.get('password', '').encode()",
+          "file": "main.py",
+          "line": 620
+        },
+        {
+          "code": "password",
+          "file": "main.py",
+          "line": 620
+        },
+        {
+          "code": "password = tmp0 = data.get('password', '') data.get('password', '').encode()",
+          "file": "main.py",
+          "line": 620
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<VAR_1>",
+        "<VAR_1>.<ATTR_1>(<STR>,<STR>)",
+        "<VAR_2>",
+        "<VAR_2>",
+        "<VAR_1>.<ATTR_1>(<STR>,<STR>).<ATTR_2>()",
+        "<VAR_2>=<VAR_1>.<ATTR_1>(<STR>,<STR>)<VAR_1>.<ATTR_1>(<STR>,<STR>).<ATTR_2>()",
+        "<VAR_3>",
+        "<VAR_3>=<VAR_2>=<VAR_1>.<ATTR_1>(<STR>,<STR>)<VAR_1>.<ATTR_1>(<STR>,<STR>).<ATTR_2>()"
+      ],
+      "fingerprint": "11417dc032a2022adb68c9703bc208db15c9921c529d193247687ab071a76c2a",
+      "context_hash": "00069a31c9f0590260987f5d1f8eca890953974602b292922d9c68b62192d5f3",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "main.py",
+          "source_line": 620,
+          "sink_file": "main.py",
+          "sink_line": 620
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 1.0,
+      "reasoning": "Tier 1: Path length is 0 (Source and sink on same line).",
+      "validation_tier": "tier1_heuristic_gate",
+      "generated_poc": {
+        "poc_type": "cURL Command",
+        "payload": "curl -X POST http://localhost:8000/login -H \"Content-Type: application/json\" -d \"{\\\"username\\\":\\\"admin\\\",\\\"password\\\":\\\"admin\\\"}\"",
+        "instructions": "Run the command against the vulnerable login endpoint. If the application uses hard\u2011coded default credentials (e.g., admin/admin), the request will authenticate successfully and return a session token."
+      },
+      "scan_id": "findings_superAeye_2026-08-23_133911",
+      "repo": "superAeye",
+      "severity": "Medium",
+      "sla_status": {
+        "status": "on-track",
+        "days_remaining": 90,
+        "overdue": false,
+        "approaching": false,
+        "deadline": "2026-11-21"
+      },
+      "defectdojo_id": 2,
+      "defectdojo_sla_deadline": "2026-11-21",
+      "defectdojo_sla_status": "active",
+      "defectdojo_status": "Verified",
+      "defectdojo_url": "http://localhost:8080/finding/2"
+    },
+    {
+      "category": "default_credentials",
+      "subtype": "CWE-798-HARDCODED-CREDENTIALS",
+      "path": [
+        {
+          "code": "password",
+          "file": "main.py",
+          "line": 207
+        },
+        {
+          "code": "password = parts[1]",
+          "file": "main.py",
+          "line": 207
+        }
+      ],
+      "chain_id": null,
+      "anonymized_path": [
+        "<VAR_1>",
+        "<VAR_1>=<VAR_2>[<NUM>]"
+      ],
+      "fingerprint": "fa2d6e768216a08b67415ce0b233750d83274623d9adbd6e10683c5035000c81",
+      "context_hash": "62f279b0ede4a1e2005b4c0c5eb1195a42080b2e7b7f4d225e67cd6b443c4502",
+      "instances": [
+        {
+          "repo": "unknown",
+          "source_file": "main.py",
+          "source_line": 207,
+          "sink_file": "main.py",
+          "sink_line": 207
+        }
+      ],
+      "verdict": "VALID",
+      "verdict_confidence": 1.0,
+      "reasoning": "Tier 1: Path length is 0 (Source and sink on same line).",
+      "validation_tier": "tier1_heuristic_gate",
+      "generated_poc": {
+        "poc_type": "cURL Command",
+        "payload": "curl -X POST http://localhost:5000/api/payload -H \\\"Content-Type: application/json\\\" -d \\\"{\\\\\\\"network_type\\\\\\\":\\\\\\\"wifi\\\\\\\",\\\\\\\"payload\\\\\\\":\\\\\\\"myssid|admin|claim123|secKey\\\\\\\"}\\\"",
+        "instructions": "Run this command against the vulnerable endpoint. The crafted payload includes a default password (admin) which will be passed to the server's _connect_wifi call, demonstrating the hard\u2011coded credential vulnerability."
+      },
+      "scan_id": "findings_superAeye_2026-08-23_133911",
+      "repo": "superAeye",
+      "severity": "Medium",
+      "sla_status": {
+        "status": "unknown",
+        "days_remaining": null,
+        "overdue": false,
+        "approaching": false,
+        "deadline": null
+      },
+      "defectdojo_id": 6,
+      "defectdojo_sla_deadline": "2026-11-21",
+      "defectdojo_sla_status": "active",
+      "defectdojo_status": "Verified",
+      "defectdojo_url": "http://localhost:8080/finding/6"
+    }
+  ]
+}

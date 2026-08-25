@@ -1,0 +1,29 @@
+{
+  "scan_metadata": {
+    "cpg_source": "C:\\Users\\thane\\OneDrive\\Desktop\\project\\Multi-agentic-sast-engine\\tests\\synthetic_scan",
+    "scan_started_at": "2026-08-17T06:10:39.057633+00:00",
+    "scan_completed_at": "2026-08-17T06:11:00.813848+00:00",
+    "rules_executed": 1,
+    "rules_errored": 1,
+    "rules_timed_out": 0,
+    "total_raw_flows": 0,
+    "total_after_dedup": 0,
+    "per_rule_stats": [
+      {
+        "rule_id": "CWE-LIMIT-TEST",
+        "sink_candidates_matched": 0,
+        "paths_dropped_max_length": 0,
+        "paths_dropped_max_per_sink_cap": 0,
+        "findings_returned": 0
+      }
+    ],
+    "scan_mode": "full"
+  },
+  "findings": [],
+  "errors": [
+    {
+      "rule_id": "CWE-LIMIT-TEST",
+      "error": "Joern error: executing C:\\Users\\thane\\OneDrive\\Desktop\\project\\Multi-agentic-sast-engine\\sast-engine\\queries\\runner.sc with params=HashMap(exclude_paths -> , sanitizers -> , cpg_path -> C:\\Users\\thane\\OneDrive\\Desktop\\project\\Multi-agentic-sast-engine\\tests\\synthetic_scan\\cpg.bin, rule_id -> CWE-LIMIT-TEST, severity -> CRITICAL, sources -> (?i)getParameter, sinks -> sink, max_path_length -> 4)\n\u001b[31m\u001b[31m-- [E161] Naming Error: C:\\Users\\thane\\AppData\\Local\\Temp\\wrapped-script1719346355965375429.sc:34:6 \u001b[0m\u001b[0m\n\u001b[31m 34 |\u001b[0m  \u001b[33mval\u001b[0m \u001b[36mmaxLength\u001b[0m = max_path_length.toInt\n\u001b[31m\u001b[31m    |\u001b[0m  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u001b[31m    |\u001b[0mmaxLength is already defined as \u001b[33mvalue\u001b[0m \u001b[32mmaxLength\u001b[0m\n\u001b[31m    |\u001b[0m\n\u001b[31m    |\u001b[0mNote that overloaded methods must all be defined in the same group of toplevel definitions\n1 error found\nException in thread \"main\" replpp.scripting.NonForkingScriptRunner$$anon$1: error during script execution: Error during compilation: Errors encountered during compilation - try `--verbose` for more output\nPlease check error output above!\nFor given input files: C:\\Users\\thane\\AppData\\Local\\Temp\\wrapped-script1719346355965375429.sc\nRe-run with `--verbose` for more details\n\n"
+    }
+  ]
+}

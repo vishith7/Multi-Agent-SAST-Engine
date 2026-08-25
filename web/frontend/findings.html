@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taintlace SAST - Findings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/findings.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">T</div>
+                <div class="brand-title">Taintlace</div>
+            </div>
+            <nav style="flex-grow: 1;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="index.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="scans.html"><i class="ph ph-shield-search"></i> Scans</a>
+                    </li>
+                    <li class="sidebar-item active">
+                        <a href="findings.html"><i class="ph ph-bug"></i> Findings</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="repositories.html"><i class="ph ph-folders"></i> Repositories</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="defectdojo.html"><i class="ph ph-plugs"></i> DefectDojo</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                Taintlace v1.0.0
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>Vulnerability Findings</h2>
+                </div>
+            </header>
+
+            <main class="content-body">
+                <!-- Filters Bar -->
+                <section class="glass-panel filter-bar">
+                    <input type="text" id="search-category" class="filter-input" placeholder="Search by category / subtype...">
+                    
+                    <select id="filter-verdict" class="filter-select">
+                        <option value="ALL">All Verdicts</option>
+                        <option value="VALID">Valid</option>
+                        <option value="NEEDS_REVIEW">Needs Review</option>
+                        <option value="FALSE_POSITIVE">False Positive</option>
+                    </select>
+
+                    <select id="filter-severity" class="filter-select">
+                        <option value="ALL">All Severities</option>
+                        <option value="Critical">Critical</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+
+                    <select id="filter-priority" class="filter-select">
+                        <option value="ALL">All Priorities</option>
+                        <option value="P1">P1</option>
+                        <option value="P2">P2</option>
+                        <option value="P3">P3</option>
+                        <option value="P4">P4</option>
+                    </select>
+
+                    <select id="filter-repo" class="filter-select">
+                        <option value="ALL">All Repositories</option>
+                        <!-- Dynamically populated -->
+                    </select>
+
+                    <select id="filter-sla" class="filter-select">
+                        <option value="ALL">All SLA Targets</option>
+                        <option value="overdue">Overdue</option>
+                        <option value="approaching">Approaching (3d)</option>
+                        <option value="on-track">On Track</option>
+                    </select>
+
+                    <button id="btn-reset-filters" class="btn btn-secondary btn-sm" style="padding: 0.5rem 0.75rem;"><i class="ph ph-arrow-counter-clockwise"></i> Reset</button>
+                </section>
+
+                <!-- Global Findings List Table -->
+                <section class="glass-panel findings-table-panel">
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Severity</th>
+                                    <th>Category</th>
+                                    <th>Repository</th>
+                                    <th>Location</th>
+                                    <th>Verdict</th>
+                                    <th>Confidence</th>
+                                    <th>Priority & SLA</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="global-findings-list">
+                                <tr>
+                                    <td colspan="8" class="empty-state">Loading findings...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/findings.js"></script>
+</body>
+</html>

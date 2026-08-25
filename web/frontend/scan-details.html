@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taintlace SAST - Scan Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/scan-details.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">T</div>
+                <div class="brand-title">Taintlace</div>
+            </div>
+            <nav style="flex-grow: 1;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="index.html"><i class="ph ph-chart-bar"></i> Dashboard</a>
+                    </li>
+                    <li class="sidebar-item active">
+                        <a href="scans.html"><i class="ph ph-shield-search"></i> Scans</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="findings.html"><i class="ph ph-bug"></i> Findings</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="repositories.html"><i class="ph ph-folders"></i> Repositories</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="defectdojo.html"><i class="ph ph-plugs"></i> DefectDojo</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                Taintlace v1.0.0
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <header class="main-header">
+                <div class="header-title" style="display: flex; align-items: center; gap: 1rem;">
+                    <a href="scans.html" class="btn btn-secondary" style="padding: 0.375rem 0.75rem;"><i class="ph ph-arrow-left"></i> Back</a>
+                    <h2>Scan Details</h2>
+                </div>
+            </header>
+
+            <main class="content-body">
+                <!-- Scan Meta Header -->
+                <div class="glass-panel meta-panel" style="margin-bottom: 1.5rem;">
+                    <div class="meta-header">
+                        <h3 id="scan-repo">Loading Repo...</h3>
+                        <span class="badge badge-success" id="scan-status">Completed</span>
+                    </div>
+                    <div class="meta-grid-details">
+                        <div class="meta-cell">
+                            <span class="label">Scan ID</span>
+                            <span class="val" id="scan-id-val">-</span>
+                        </div>
+                        <div class="meta-cell">
+                            <span class="label">Scan Type</span>
+                            <span class="val" id="scan-type-val">-</span>
+                        </div>
+                        <div class="meta-cell">
+                            <span class="label">Started At</span>
+                            <span class="val" id="scan-started">-</span>
+                        </div>
+                        <div class="meta-cell">
+                            <span class="label">Findings Count</span>
+                            <span class="val" id="scan-findings-count">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pipeline Stages Visualizer -->
+                <section class="glass-panel pipeline-panel" style="margin-bottom: 1.5rem;">
+                    <h3>Analysis Pipeline Progress</h3>
+                    <div class="pipeline-flow" id="pipeline-flow-container">
+                        <!-- Step items will be populated dynamically -->
+                        <div class="pipeline-step">
+                            <div class="step-circle"><i class="ph ph-dots-three"></i></div>
+                            <span class="step-label">Prepare</span>
+                        </div>
+                        <div class="pipeline-line"></div>
+                        <div class="pipeline-step">
+                            <div class="step-circle"><i class="ph ph-dots-three"></i></div>
+                            <span class="step-label">CPG Parse</span>
+                        </div>
+                        <div class="pipeline-line"></div>
+                        <div class="pipeline-step">
+                            <div class="step-circle"><i class="ph ph-dots-three"></i></div>
+                            <span class="step-label">Scan</span>
+                        </div>
+                        <div class="pipeline-line"></div>
+                        <div class="pipeline-step">
+                            <div class="step-circle"><i class="ph ph-dots-three"></i></div>
+                            <span class="step-label">Chaining</span>
+                        </div>
+                        <div class="pipeline-line"></div>
+                        <div class="pipeline-step">
+                            <div class="step-circle"><i class="ph ph-dots-three"></i></div>
+                            <span class="step-label">Dedupe</span>
+                        </div>
+                        <div class="pipeline-line"></div>
+                        <div class="pipeline-step">
+                            <div class="step-circle"><i class="ph ph-dots-three"></i></div>
+                            <span class="step-label">LLM Cascade</span>
+                        </div>
+                        <div class="pipeline-line"></div>
+                        <div class="pipeline-step">
+                            <div class="step-circle"><i class="ph ph-dots-three"></i></div>
+                            <span class="step-label">DefectDojo</span>
+                        </div>
+                    </div>
+                </section>
+ 
+                <!-- Findings list from this scan -->
+                <section class="glass-panel findings-panel">
+                    <div class="panel-header-flex">
+                        <h3>Scan Vulnerabilities</h3>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                            <button id="btn-retry-upload-dd" class="btn btn-primary btn-sm" style="display: none;"><i class="ph ph-upload-simple"></i> Retry DefectDojo Upload</button>
+                            <button id="btn-sync-dd" class="btn btn-secondary btn-sm"><i class="ph ph-arrows-clockwise"></i> Sync from DefectDojo</button>
+                            <a id="btn-go-to-dd" href="#" target="_blank" class="btn btn-primary btn-sm" style="display: none; text-decoration: none; align-items: center; gap: 0.5rem;"><i class="ph ph-plugs"></i> Go to DefectDojo</a>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Severity</th>
+                                    <th>Category</th>
+                                    <th>Verdict</th>
+                                    <th>Confidence</th>
+                                    <th>Priority & SLA</th>
+                                    <th>Location</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scan-findings-list">
+                                <tr>
+                                    <td colspan="7" class="empty-state">Loading findings...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/scan-details.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"subtype": "CWE-79-XSS", "context_hash": "7d0defe7f8dbcc828924b73a0a043e9738af2a8e15c2faf7183d6fed5a5463d3", "reasoning": "tier3_api_or_parse_error", "verdict": "NEEDS_REVIEW", "verdict_confidence": 0.0, "validation_tier": "tier4_human_review_queue", "validated_at_timestamp": 1787336759.2846243}
